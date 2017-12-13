@@ -1,0 +1,40 @@
+@import "./styles/_index.scss";
+@import "./styles/bootstrap-custom.scss";
+// // Utility classes
+// @import "~bootstrap/scss/utilities"
+// @import '../../node_modules/bootstrap/scss/variables';
+// @import '../../node_modules/bootstrap/scss/_mixins';
+// $enable-flex: true;
+// @import '../../node_modules/bootstrap/scss/bootstrap-flex';
+// // @import '../../node_modules/bootstrap/scss/bootstrap';
+
+//@import '~/bootstrap/scss/bootstrap';
+
+// .px-custom {
+//     padding-left: 3rem;
+//     padding-right: 3rem;
+//   }
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+* {
+    box-sizing: border-box;
+}
+ ul {
+    padding: 0;
+    list-style-type: none;
+ }
+ li {
+     &:focus {
+         outline: none;
+     }
+ }
+.d-flex {
+    display: flex;
+  }
+
+*::-ms-clear {display: none; width:0; height:0;}

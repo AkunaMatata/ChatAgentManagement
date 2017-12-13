@@ -1,0 +1,20 @@
+$settings-main-title-color: #434c5d;
+// todo : make a component for header
+
+.user-settings {
+    header {
+        display: block;
+        span {
+            text-align: center;
+            color: $settings-main-title-color;
+            padding-left: 24px;
+            padding-right: 24px;
+            line-height: 50px;
+            height: 50px;
+        }
+        button {
+            align-items: flex-end;
+            line-height: 36px;
+        }
+    }
+}

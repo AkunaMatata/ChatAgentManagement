@@ -1,0 +1,33 @@
+$background-color-menu: #1d253a;
+$navigation-color:#fff;
+
+.left-navigation {
+    background-color: $background-color-menu;
+    height: 100%;
+    color: $navigation-color;
+    left: 0;
+    bottom: 0;
+    width: $left-navigation-menu-width;
+    position: absolute;
+    &__container {
+        flex-direction: column;
+        align-items: flex-start
+    }
+    &__top-menu {
+        flex-direction: column;
+        justify-self: flex-start;
+    }
+    &__bottom-menu {
+        flex-direction:column;
+        justify-self: flex-end;
+        margin-top: auto;
+    }
+}
+li {
+    &.active {
+        border-left: 4px solid #60aaf2;
+    }
+}
+a {
+    color: $navigation-color;
+}
