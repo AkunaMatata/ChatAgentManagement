@@ -1,38 +1,58 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.Mvc;
+using System.Web.Routing;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
+using PersistenceData.Models;
 
 namespace LoginManagementAPI.Api.Controllers
 {
 	/// <summary>
 	/// The login controller.
 	/// </summary>
-	public class LoginController : Controller
+	public class LoginController : ApiController
 	{
-		private readonly IAuthenticationService _authenticationService;
+		private readonly ILoginService _loginService;
 
-		public LoginController(IAuthenticationService authenticationService)
+		public LoginController()
 		{
-			this._authenticationService = authenticationService;
+			this._loginService = new LoginService();
 		}
 
 		/// <summary>
 		/// The default login action.
 		/// </summary>
 		/// <returns>The value indicating whether user is authenticated or not.</returns>
-		[HttpPost]
-		public JsonResult Index(UserViewModel model)
+		[System.Web.Http.HttpPost]
+		[System.Web.Http.ActionName("Default")]
+		public JsonResult Post([FromBody] UserViewModel model)
 		{
 			// TODO models mapping
-			User user = new User();
+			UserModel userModel = new UserModel();
 
-			var result = this._authenticationService.Validate(model) ? "login success" : "login failed";
+			UserModel result = this._loginService.Validate(userModel);
 
 			return new JsonResult
 			{
-				Data = result
+				Data = result,
+				JsonRequestBehavior = JsonRequestBehavior.AllowGet
 			};
+		}
+
+		/// <summary>
+		/// The register action.
+		/// </summary>
+		/// <param name="model">The <see cref="RegisterViewModel"/> model.</param>
+		/// <returns>The registration result.</returns>
+		[System.Web.Mvc.HttpPost]
+		[System.Web.Http.Route("api/login/register")]
+		public JsonResult Register(RegisterViewModel model)
+		{
+			var registerModel = new RegisterModel();
+
+			return new JsonResult { Data = registerModel };
 		}
 	}
 }

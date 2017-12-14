@@ -1,4 +1,4 @@
-﻿namespace LoginManagementAPI.Models
+﻿namespace PersistenceData.Models
 {
 	/// <summary>
 	/// The enumeration for user role.

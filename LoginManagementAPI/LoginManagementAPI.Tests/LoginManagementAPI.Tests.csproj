@@ -122,6 +122,10 @@
       <Project>{FEEFCBFB-97DB-419E-B943-99CF382D2622}</Project>
       <Name>LoginManagementAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersistenceData\PersistenceData.csproj">
+      <Project>{6CE3FBB3-D01D-434D-98D9-D023A233EF60}</Project>
+      <Name>PersistenceData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,16 +1,20 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LoginManagementAPI.Models
+namespace PersistenceData.Models
 {
 	/// <summary>
 	/// The user model.
 	/// </summary>
-	public class User
+	public class UserModel
 	{
 		/// <summary>
 		/// The identifier.
 		/// </summary>
-		public Guid Id { get; set; }
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int Id { get; set; }
 
 		/// <summary>
 		/// The password.

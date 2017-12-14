@@ -2,8 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LoginManagementAPI.Api.Controllers;
 using LoginManagementAPI.Api.ViewModels;
+using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
 using Moq;
+using PersistenceData.Models;
 
 namespace LoginManagementAPI.Tests.Controllers
 {
@@ -13,7 +15,7 @@ namespace LoginManagementAPI.Tests.Controllers
 	[TestClass]
 	public class LoginControllerTests
 	{
-		private Mock<IAuthenticationService> _mockedAuthenticationService;
+		private Mock<ILoginService> _mockedLoginService;
 
 		/// <summary>
 		/// The initialize method.
@@ -21,22 +23,26 @@ namespace LoginManagementAPI.Tests.Controllers
 		[TestInitialize]
 		public void Initialize()
 		{
-			this._mockedAuthenticationService = new Mock<IAuthenticationService>();
+			this._mockedLoginService = new Mock<ILoginService>();
 		}
 
+		/// <summary>
+		/// Index method should return not null model.
+		/// </summary>
 		[TestMethod]
-		public void Index()
+		public void LoginControllerIndexReturnsNotNullModel()
 		{
 			// Arrange
-			LoginController controller = new LoginController(this._mockedAuthenticationService.Object);
+			LoginController controller = new LoginController();
 			var fakeModel = new UserViewModel { Email = "testEmail", Password = "12345" };
+			this._mockedLoginService.Setup(x => x.Validate(It.IsAny<UserModel>())).Returns(new UserModel());
 
 			// Act
-			JsonResult result = controller.Index(fakeModel);
+			JsonResult result = controller.Post(fakeModel);
 
 			// Assert
 			Assert.IsNotNull(result);
-			Assert.IsTrue(((string) result.Data).ToLower().Contains("login"));
+			Assert.IsNotNull(result.Data);
 		}
 	}
 }

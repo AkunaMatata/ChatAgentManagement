@@ -1,15 +1,21 @@
-﻿namespace LoginManagementAPI.Api.ViewModels
+﻿namespace LoginManagementAPI.Models
 {
 	/// <summary>
-	/// The user view model.
+	/// The register model.
 	/// </summary>
-	public class UserViewModel
+	public class RegisterModel
 	{
 		/// <summary>
 		/// Gets or sets the email.
 		/// </summary>
 		/// <value>The email.</value>
 		public string Email { get; set; }
+
+		/// <summary>
+		/// Gets or sets the full name.
+		/// </summary>
+		/// <value>The full name.</value>
+		public string FullName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the password.
