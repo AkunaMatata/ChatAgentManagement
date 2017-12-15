@@ -5,4 +5,15 @@ import { Component } from '@angular/core';
     templateUrl: './user-settings.component.html',
     styleUrls: ['./user-settings.component.scss']
 })
-export class UserSettingsComponent { }
+export class UserSettingsComponent {
+
+    public title: string = 'Users';
+    public childClosed: boolean = false;
+
+    constructor() {
+    }
+
+    public handleCardClick() {
+        this.childClosed = true;
+    }
+ }

@@ -1,11 +1,13 @@
-<div class="container user-settings">
-    <header class="d-flex">
-        <span>Users</span>
-        <button class="btn btn-primary btn-md">+ Add User</button>
-    </header>
-<div> agents panel</div>
-<div> agents list
-    <div>agent card 1</div>
-    <div>agent card 2</div>
+<div class="container user-settings" >
+    <div *ngIf="!childClosed">
+        <ciw-header [title]="title">
+            <button [routerLink]="['add-user']" class="btn btn-primary btn-sm">+ Add User</button>
+        </ciw-header>
+        <ciw-agent-panel></ciw-agent-panel>
+        <main class="agent-list__container" >
+            <ciw-agent-card (click)="handleCardClick()"></ciw-agent-card>
+            <ciw-agent-card></ciw-agent-card>
+        </main>
+    </div>
 </div>
-</div>
+<router-outlet></router-outlet>

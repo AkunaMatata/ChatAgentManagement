@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
-import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserSettingsModule } from './user-settings/user-settings.module';
+import { SharedModule } from '../shared/shared.module';
 import { ChatCustomizationComponent } from './chat-customization-settings/chat-customization-settings.component';
 import { ChatAssignmentComponent } from './chat-assignment/chat-assignment.component';
 import { GeneralSettingsComponent } from './general-settings/general-settings.component';
@@ -15,11 +17,16 @@ import { SettingsRoute } from './settings.route';
 @NgModule(
     {
         imports: [
-            SettingsRoute, RouterModule, CommonModule
+            SettingsRoute,
+            RouterModule,
+            CommonModule,
+            UserSettingsModule,
+            BrowserModule,
+            SharedModule
         ],
         declarations: [
             SettingsComponent,
-            UserSettingsComponent,
+            //UserSettingsComponent,
             ChatCustomizationComponent,
             ChatAssignmentComponent,
             GeneralSettingsComponent,
@@ -29,7 +36,7 @@ import { SettingsRoute } from './settings.route';
         ],
         exports: [
             SettingsComponent,
-            UserSettingsComponent,
+            UserSettingsModule,
             ChatCustomizationComponent,
             ChatAssignmentComponent,
             GeneralSettingsComponent,

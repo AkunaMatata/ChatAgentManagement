@@ -1,0 +1,38 @@
+ca-tooltip {
+    position: absolute;
+    width: 1920px;
+    height: 0;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.ca-tooltip {
+    display: none;
+    margin-top: 7px;
+    padding: 8px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 200px;
+    text-align: center;
+    background-color: $gray-2;
+    color: $gray-6;
+    word-break: break-all;
+    font-size: 12px;
+    z-index: 1;
+
+    &__pointer {
+        position: absolute;
+        height: 10px; width: 10px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background-color: $gray-2;
+        top: 0; left: 50%;
+    }
+
+    &--visible {
+        display: block;
+    }
+}

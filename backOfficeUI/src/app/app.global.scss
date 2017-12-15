@@ -1,38 +1,38 @@
 @import "./styles/_index.scss";
 @import "./styles/bootstrap-custom.scss";
+@import '~font-awesome/css/font-awesome.min.css';
 // // Utility classes
-// @import "~bootstrap/scss/utilities"
-// @import '../../node_modules/bootstrap/scss/variables';
-// @import '../../node_modules/bootstrap/scss/_mixins';
-// $enable-flex: true;
-// @import '../../node_modules/bootstrap/scss/bootstrap-flex';
-// // @import '../../node_modules/bootstrap/scss/bootstrap';
-
-//@import '~/bootstrap/scss/bootstrap';
-
-// .px-custom {
-//     padding-left: 3rem;
-//     padding-right: 3rem;
-//   }
+@import "~bootstrap/scss/utilities";
 
 html {
     position: relative;
     min-height: 100%;
     overflow-x: hidden;
+    font-size: $font-size-root;
+  }
+
+body {
+    // margin-bottom: $footer-height + $content-margin-bottom;
+    font-family: $primary-regular-font-family;
   }
 
 * {
     box-sizing: border-box;
 }
- ul {
-    padding: 0;
-    list-style-type: none;
- }
- li {
+ a, p, div, span {
      &:focus {
          outline: none;
      }
  }
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+li {
+     &:focus {
+         outline: none;
+     }
+}
 .d-flex {
     display: flex;
   }

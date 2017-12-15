@@ -1,21 +1,22 @@
 <nav class="bg-faded left-navigation d-flex left-navigation__container">
     <ul class="d-flex left-navigation__top-menu menu-container">
-        <li class="nav-item" tooltip="Chats" routerLink="/chat" routerLinkActive="active">
-            <span class="nav-link">Chats</span>
+        <li class="nav-item" routerLink="/chat" routerLinkActive="active">
+            <a class="nav-link">
+                <i class="fa fa-weixin" aria-hidden="true"></i>
+            </a>
         </li>
         <li class="nav-item" tooltip="History" routerLink="/history" routerLinkActive="active">
-            <span class="nav-link">History</span>
+            <a class="nav-link">
+                <i class="fa fa-archive" aria-hidden="true"></i>
+            </a>
         </li>
     </ul>
 
     <ul class="left-navigation__bottom-menu d-flex menu-container">
-        <li class="nav-item" tooltip="Settings" routerLink="/settings" routerLinkActive="active">
-            <a class="icon-wrapper" href="#">Setting img
-                <i></i>
+        <li class="nav-item" data-toggle="tooltip" title="Tooltip" routerLink="/settings" routerLinkActive="active">
+            <a class="icon-wrapper" href="#">
+                <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
-        </li>
-        <li class="nav-item" tooltip="User Profile" routerLink="/user" routerLinkActive="active" >
-            <a href="#">Add user profile </a>
         </li>
     </ul>
 </nav>

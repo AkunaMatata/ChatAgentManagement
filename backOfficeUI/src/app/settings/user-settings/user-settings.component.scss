@@ -2,19 +2,37 @@ $settings-main-title-color: #434c5d;
 // todo : make a component for header
 
 .user-settings {
+    &.container {
+        display: flex;
+        flex-direction: column;
+    }
     header {
-        display: block;
+        display: flex;
+        justify-content: center;
+        padding-right: 0;
         span {
+            display: block;
+            width: 100%;
             text-align: center;
             color: $settings-main-title-color;
             padding-left: 24px;
             padding-right: 24px;
-            line-height: 50px;
+            line-height: 34px;
+            font-weight: 400;
             height: 50px;
+            margin: 0 auto;
         }
         button {
-            align-items: flex-end;
-            line-height: 36px;
+            &.btn {
+                font-size: 1rem;
+            }
         }
+    }
+
+    .agent-list__container {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0;
+        margin: 0 65px;
     }
 }

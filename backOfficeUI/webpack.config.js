@@ -20,7 +20,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dev')
     },
     entry: {
-        app: ['./src/main.ts', './src/vendors.ts']
+        app: ['./src/main.ts', './src/vendors.ts', './src/images/images.index.ts']
     },
     resolve: {
         extensions: ['.ts', '.js', '.json'],
