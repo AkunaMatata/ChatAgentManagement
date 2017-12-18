@@ -1,13 +1,19 @@
-<div class="container user-settings" >
-    <div *ngIf="!childClosed">
+<div class="container user-settings view-container" *ngIf="!childClosed">
+    <div class="view-container">
         <ciw-header [title]="title">
             <button [routerLink]="['add-user']" class="btn btn-primary btn-sm">+ Add User</button>
         </ciw-header>
         <ciw-agent-panel></ciw-agent-panel>
-        <main class="agent-list__container" >
-            <ciw-agent-card (click)="handleCardClick()"></ciw-agent-card>
-            <ciw-agent-card></ciw-agent-card>
-        </main>
+        <div class="view-container scroller">
+            <main class="agent-list__container scrollable" >
+                <div class="content">
+                    <ciw-agent-card (click)="handleCardClick()"></ciw-agent-card>
+                    <ciw-agent-card [agentCard]="currentAgent"></ciw-agent-card>
+                    <ciw-agent-card></ciw-agent-card>
+                    <ciw-agent-card></ciw-agent-card>
+                </div>
+            </main>
+        </div>
     </div>
 </div>
 <router-outlet></router-outlet>

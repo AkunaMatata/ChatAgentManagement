@@ -21,12 +21,18 @@ $links-line-height: 30px;
         color: $navigation-color;
     }
 
+    .view-container {
+        height: 100%;
+        width: 100%;
+    }
+
     header {
         display: block;
         text-align: center;
         @include padding-x(24px);
         line-height: $header-line-height;
         height: $header-height;
+        font-size: 1.06rem;
         &.col-header {
             border-bottom: 1px solid #1e2332
         }
@@ -38,6 +44,7 @@ $links-line-height: 30px;
 
     .category {
         margin-bottom: 30px;
+        font-size: 1rem;
         span {
             color: #fff;
             display: block;
@@ -60,6 +67,7 @@ $links-line-height: 30px;
             }
             &.active {
                 border-left: 4px solid #60aaf2;
+                color: #fff;
             }
         }
     }

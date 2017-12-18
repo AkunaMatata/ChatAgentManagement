@@ -1,7 +1,5 @@
 ﻿using System.Web.Http;
-using System.Web.Http.Results;
 using System.Web.Mvc;
-using System.Web.Routing;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import  { UrlConstants } from '../../../shared/constants/url-constants';
 
 @Component({
     selector: 'ciw-agent-card',
@@ -6,9 +7,24 @@ import { Component } from '@angular/core';
     styleUrls: ['./agent-card.component.scss']
 })
 
-export class AgentCardComponent {
+export class AgentCardComponent implements OnInit{
     public status: string = 'online';
-    public agentName: string = 'Name';
-    public agentEmail: string = 'Email';
+    public get agentName() {
+        return this.agentCard ? this.agentCard.FirstName : 'Name'
+    };
+    public get agentEmail() {
+        return this.agentCard ? this.agentCard.Email : 'email'
+    };
     public id: string = 'user1';
+    public ie: string = '';
+    public url: string = UrlConstants.DefaultLogo;
+
+    @Input()
+    public agentCard: any;
+
+    constructor() {
+    }
+
+    public ngOnInit () {
+    }
  }

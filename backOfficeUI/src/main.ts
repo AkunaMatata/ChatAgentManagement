@@ -1,4 +1,4 @@
-import 'zone.js'
+import 'zone.js';
 import 'core-js/es7/reflect';
 import './polyfills.ts';
 // import { enableProdMode } from '@angular/core';

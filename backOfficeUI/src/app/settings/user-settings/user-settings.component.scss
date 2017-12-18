@@ -1,5 +1,4 @@
 $settings-main-title-color: #434c5d;
-// todo : make a component for header
 
 .user-settings {
     &.container {
@@ -29,10 +28,16 @@ $settings-main-title-color: #434c5d;
         }
     }
 
+    .scroller {
+        overflow: auto;
+    }
+
     .agent-list__container {
-        display: flex;
-        flex-direction: column;
         padding: 30px 0;
         margin: 0 65px;
+        max-width: 1000px;
+        flex: 1;
+        overflow: auto;
+        height: 100% ;
     }
 }

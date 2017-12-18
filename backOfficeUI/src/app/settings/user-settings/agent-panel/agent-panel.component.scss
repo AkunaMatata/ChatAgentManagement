@@ -5,6 +5,11 @@ $nav-item-right-margin: 10px;
 $nav-item-label-color-active: rgba(90,105,118,.8);
 $nav-item-label-color: #5a6976;
 $nav-item--active_border_color: #5ca8f5;
+$icon_color: $nav-item--active_border_color;
+$icon_padding: 40px;
+$icon-width: 20px;
+$search_background:#f8fafb;
+$search_border_color:#cfd5db;
 
 .agent-panel {
     @include flex-container(row, center, center);
@@ -16,8 +21,37 @@ $nav-item--active_border_color: #5ca8f5;
     }
 
     .search {
-        display: block;
         justify-self: end;
+        @include flex-container(row, center, center);
+        padding-right: 20px;
+
+        .icon {
+            position: relative;
+            width: $icon-width;
+            right: calc( #{$icon_padding} - #{$icon-width});
+        }
+
+        input {
+            font-size: 16px;
+            line-height: 34px;
+
+            width: 100%;
+            color: #5a6976;
+            border-radius: 4px;
+            background-color: $search_background;
+            border: 1px solid #cfd5db;
+             padding-left: 10px;
+            &.with-icon {
+                padding-right: $icon_padding;
+            }
+        }
+
+        i {
+            font-size: 16px;
+            line-height: 34px;
+            color: $icon_color;
+            vertical-align: middle;
+        }
     }
 
     .nav {
@@ -50,6 +84,23 @@ $nav-item--active_border_color: #5ca8f5;
 
             .info {
                     color: $nav-item-label-color;
+                    padding: 0 5px;
+            }
+        }
+
+        .status {
+            display: inline-block;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            &.accept {
+                background-color: green;
+            }
+            &.busy {
+                background-color: red;
+            }
+            &.offline {
+                background-color: grey;
             }
         }
 

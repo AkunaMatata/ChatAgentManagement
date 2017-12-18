@@ -5,15 +5,18 @@
                 <span class="info"> All ({{totalCount}})</span>
             </li>
             <li class="nav__item" data-toggle="tab">
-                <span class="info"> Accepting chats ({{availableCount}})</span>
+                <span class="status accept"></span><span class="info"> Accepting chats ({{availableCount}})</span>
             </li>
             <li class="nav__item" data-toggle="tab">
-                <span class="info"> Not accepting chats ({{busyCount}})</span>
+                <span class="status busy"></span><span class="info"> Not accepting chats ({{busyCount}})</span>
             </li>
             <li class="nav__item" data-toggle="tab">
-                <span class="info">  Offline  ({{offlineCount}})</span>
+                <span class="status offline"></span><span class="info">  Offline  ({{offlineCount}})</span>
             </li>
         </ul>
     </div>
-    <span class="search"><input type="search" placeholder="search"/> </span>
+    <div class="search">
+        <input type="text" class="with-icon form-input" placeholder="search "/>
+        <span class="icon"><i class="fa fa-search"></i></span>
+    </div>
 </div>

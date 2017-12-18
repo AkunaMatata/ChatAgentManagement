@@ -4,6 +4,7 @@ var webpack = require('webpack');
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var precss            = require('precss');
 var autoprefixer      = require('autoprefixer');
 var path              = require('path');
@@ -159,6 +160,9 @@ module.exports = {
             inject: 'body',
             hash: true
         }),
+        new CopyWebpackPlugin([
+            { from: 'src/images', to: 'content/' }
+        ]),
 
         // Extracting CSS from application
         new ExtractTextPlugin('[name].css'),

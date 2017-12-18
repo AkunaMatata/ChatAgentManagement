@@ -11,16 +11,21 @@ $border-bottom-color:  rgba(221,226,230,.5);
 
     .avatar-container {
         border-radius: 50%;
-        background-color: royalblue;
         height: 55px;
         width: 55px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     }
 
     &__user-info {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        padding-left: 10px;
+        padding-left: 1rem;
         h3 {
             color: #5a6976;
             font-size: 1.2rem;
@@ -49,6 +54,11 @@ $border-bottom-color:  rgba(221,226,230,.5);
         bottom: 3rem;
         text-align: center;
 
+        // todo: figure out later
+        // .msie & {
+        //     left: 0;
+        // }
+
         &.online {
             background-color: green;
         }
@@ -60,5 +70,6 @@ $border-bottom-color:  rgba(221,226,230,.5);
         &.busy {
             background-color: red;
         }
+
     }
 }

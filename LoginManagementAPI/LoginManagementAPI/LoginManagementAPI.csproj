@@ -192,10 +192,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AvailableDay.cs" />
     <Compile Include="Models\Avatar.cs" />
+    <Compile Include="Models\ChatAssignment.cs" />
+    <Compile Include="Models\ChatCustomization.cs" />
+    <Compile Include="Models\ChatRoutingMode.cs" />
+    <Compile Include="Models\ChatSettings.cs" />
+    <Compile Include="Models\GeneralSettings.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Shortcuts.cs" />
     <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Models\UserDetails.cs" />
+    <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ILoginService.cs" />
     <Compile Include="Services\IPasswordService.cs" />
