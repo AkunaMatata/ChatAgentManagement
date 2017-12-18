@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LoginManagementAPI.Models
+﻿namespace LoginManagementAPI.Models
 {
 	/// <summary>
 	/// The user details model.
@@ -10,7 +8,7 @@ namespace LoginManagementAPI.Models
 		/// <summary>
 		/// The user identifier.
 		/// </summary>
-		public Guid UserId { get; set; }
+		public int UserId { get; set; }
 
 		/// <summary>
 		/// The first name.
@@ -26,5 +24,11 @@ namespace LoginManagementAPI.Models
 		/// The address.
 		/// </summary>
 		public string Address { get; set; }
+
+		/// <summary>
+		/// Gets or sets the settings.
+		/// </summary>
+		/// <value>The settings.</value>
+		public UserSettings Settings { get; set; }
 	}
 }

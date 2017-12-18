@@ -22,6 +22,12 @@ namespace PersistenceData.Models
 		public string Password { get; set; }
 
 		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		/// <value>The name.</value>
+		public string Name { get; set; }
+
+		/// <summary>
 		/// The email.
 		/// </summary>
 		public string Email { get; set; }

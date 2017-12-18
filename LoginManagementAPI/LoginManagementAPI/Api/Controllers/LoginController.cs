@@ -16,7 +16,7 @@ namespace LoginManagementAPI.Api.Controllers
 
 		public LoginController()
 		{
-			this._loginService = new LoginService();
+			this._loginService = new LoginService(this.ModelState);
 		}
 
 		/// <summary>
@@ -48,10 +48,14 @@ namespace LoginManagementAPI.Api.Controllers
 		[System.Web.Http.Route("api/login/register")]
 		public JsonResult Register(RegisterViewModel model)
 		{
-			var registerModel = new RegisterModel();
-			this._loginService.Register(registerModel);
+			//TODO models mapping
+			var registerModel = new RegisterModel { Email = model.Email, FullName = model.FullName, Password = model.Password };
+			
+			RegisterModel updatedModel = this._loginService.Register(registerModel);
 
-			return new JsonResult { Data = registerModel };
+			var result = new JsonResult {Data = updatedModel != null ? (object) updatedModel : this.ModelState};
+
+			return result;
 		}
 	}
 }

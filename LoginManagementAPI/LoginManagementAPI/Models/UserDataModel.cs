@@ -12,13 +12,13 @@ namespace LoginManagementAPI.Models
 		/// Gets or sets the agent id.
 		/// </summary>
 		/// <value>The agent id.</value>
-		public Guid AgentId { get; set; }
+		public int AgentId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the customer id.
 		/// </summary>
 		/// <value>The customer id.</value>
-		public Guid CustomerId { get; set; }
+		public int CustomerId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the role.

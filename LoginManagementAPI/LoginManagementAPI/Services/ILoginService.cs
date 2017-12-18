@@ -19,7 +19,7 @@ namespace LoginManagementAPI.Services
 		/// Registers an user.
 		/// </summary>
 		/// <param name="model">The register model.</param>
-		/// <returns>The user model.</returns>
-		UserModel Register(RegisterModel model);
+		/// <returns>The user register model.</returns>
+		RegisterModel Register(RegisterModel model);
 	}
 }
