@@ -1,4 +1,5 @@
 ﻿using LoginManagementAPI.Models;
+using LoginManagementAPI.Services;
 using PersistenceData.Models;
 
 namespace LoginManagementAPI.Services
@@ -8,6 +9,13 @@ namespace LoginManagementAPI.Services
 	/// </summary>
 	public class LoginService : ILoginService
 	{
+		private readonly IPersistenceService _persistenceService;
+
+		public LoginService()
+		{
+			this._persistenceService = new PersistenceService();
+		}
+
 		/// <summary>
 		/// Validates the user credentials.
 		/// </summary>
@@ -23,9 +31,12 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="model">The register model.</param>
 		/// <returns>The register model.</returns>
-		public RegisterModel Register(RegisterModel model)
+		public UserModel Register(RegisterModel model)
 		{
-			throw new System.NotImplementedException();
+			UserDataModel userDataModel = this._persistenceService.RegisterUser(model);
+			var userModel = new UserModel();
+
+			return userModel;
 		}
 	}
 }

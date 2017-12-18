@@ -51,6 +51,7 @@ namespace LoginManagementAPI.Api.Controllers
 		public JsonResult Register(RegisterViewModel model)
 		{
 			var registerModel = new RegisterModel();
+			this._loginService.Register(registerModel);
 
 			return new JsonResult { Data = registerModel };
 		}

@@ -12,9 +12,9 @@ namespace LoginManagementAPI.Services
 		/// <summary>
 		/// Registers and saves a user in database.
 		/// </summary>
-		/// <param name="userModel"></param>
+		/// <param name="registerModel">The register model.</param>
 		/// <returns>The user data model.</returns>
-		UserDataModel RegisterUser(UserModel userModel);
+		UserDataModel RegisterUser(RegisterModel registerModel);
 
 		/// <summary>
 		/// Gets a user by email.
@@ -36,10 +36,11 @@ namespace LoginManagementAPI.Services
 		/// <summary>
 		/// Registers and saves a user in database.
 		/// </summary>
-		/// <param name="userModel"></param>
+		/// <param name="registerModel">The register model.</param>
 		/// <returns>The user data model.</returns>
-		public UserDataModel RegisterUser(UserModel userModel)
+		public UserDataModel RegisterUser(RegisterModel registerModel)
 		{
+			var userModel = new UserModel();
 			UserModel userAddedModel = this.userDbService.SaveUser(userModel);
 
 			return new UserDataModel { Role = userAddedModel.Role };
