@@ -1,0 +1,185 @@
+﻿// Rewrite bootstrap variables
+// or add custom
+$enable-flex: true;
+
+$left-navigation-menu-width: 52px;
+// Fonts
+
+$font-size-root: 16px;
+// Font-family
+$primary-font-family: 'Source Sans Pro';
+
+// Sub-fonts
+$primary-light-font-family: $primary-font-family; //+ ' Light';
+$primary-regular-font-family: $primary-font-family;// + ' Regular';
+$primary-italic-font-family: $primary-font-family;// + ' Italic';
+$primary-semibold-font-family: $primary-font-family;// + ' Semibold';
+$primary-bold-font-family: $primary-font-family; //+ ' Bold';
+
+// Color variables
+
+// Basic colors
+$navigation-color: #fff;
+$ipm-brand: #267777;
+$ipm-brand2: #82D5D5;
+
+$ipp-brand: #967011;
+$ipp-brand2: #FFC32D;
+
+$sm-brand: #C75000;
+$sm-brand2: #FF7920;
+
+$gray-1: #2A2D35;
+$gray-2: #6D6F78;
+$gray-3: #B2B2B8;
+$gray-4: #D3D3D6;
+$gray-5: #FAFAFC;
+
+$white-1: #FFFFFF;
+
+$default-link-color: #23799A;
+
+$body-color: $gray-1;
+
+// Alerts colors
+$color-success: #4CAF50;
+$color-warning: #FC8F62;
+$color-error: #D70025;
+$color-info: #288CB6;
+
+$widget-separator-color: #dadada;
+
+// Button colors
+$btn-info-color: #169bd5;
+$btn-disabled-bg-color: $gray-4;
+$btn-disabled-border-color: $gray-3;
+$btn-disabled-color: #fff;
+// $btn-primary-bg: #967011;
+// $btn-primary-border: #967011;
+// $btn-primary-color: #fff;
+
+// Global elements
+$spinner-max-z-index: 100001 !default; // one index greater than kendo largest z-index (used in charts)
+$popup-window-z-index: 10001 !default; // the same as kendo window popup z-index
+$widget-spinner-max-z-index: 9000 !default;
+$widget-busy-overlay-color: fade-out($gray-3, 0.5);
+$spinner-overlay-background: fade-out($gray-3, 0.2);
+$content-width: 136rem;
+$content-left-right-padding: 3rem;
+$content-margin-bottom: 2rem;
+$footer-height: 3rem;
+$header-margin-bottom: 4rem !default;
+    // Grid-pager
+$ca-grid-header-font-family: $primary-semibold-font-family;
+$ca-grid-outer-border-color: $gray-3;
+$ca-grid-btn-selected-color: $white-1;
+$ca-grid-btn-selected-bg-color: $ipp-brand;
+$ca-grid-nav-btn-color: $gray-2;
+$ca-grid-nav-btn-disabled-color: $gray-3;
+    // Dropdown
+$ca-dropdown-container-border-color: $gray-3;
+$ca-dropdown-disabled-color: $gray-3;
+$ca-dropdown-popup-background-color: $white-1;
+$ca-dropdown-selected-background-color: $ipp-brand2;
+$ca-dropdown-selected-color: $gray-1;
+$ca-dropdown-disabled-border-color: $gray-4;
+$ca-dropdown-popup-z-index: $popup-window-z-index;
+
+// Basic fonts
+$font-size1: 0.1rem;
+$font-size2: 0.2rem;
+$font-size3: 0.3rem;
+$font-size4: 0.4rem;
+$font-size5: 0.5rem;
+$font-size6: 0.6rem;
+$font-size7: 0.7rem;
+$font-size8: 0.8rem;
+$font-size9: 0.9rem;
+$font-size10: 1rem;
+$font-size11: 1.1rem;
+$font-size12: 1.2rem;
+$font-size13: 1.3rem;
+$font-size14: 1.4rem;     // Base
+$font-size15: 1.5rem;
+$font-size16: 1.6rem;
+$font-size18: 1.8rem;
+$font-size20: 2rem;
+$font-size22: 2.2rem;
+$font-size24: 2.4rem;
+$font-size26: 2.6rem;
+$font-size28: 2.8rem;
+$font-size30: 3rem;
+$font-size32: 3.2rem;
+$font-size34: 3.4rem;
+$font-size36: 3.6rem;
+$font-size38: 3.8rem;
+$font-size40: 4rem;
+$font-size60: 6rem;
+$font-size70: 7rem;
+$font-size80: 8rem;
+
+// Typography
+
+$font-size-root: 16px;
+$default-text-large: $font-size16;
+
+// Size variables
+$widget-min-height: 33rem; // fix for graph displaying
+$widget-default-padding: $font-size20;
+$default-border-width: $font-size1;
+
+// <h-></h->
+$font-size-h1: $font-size28 !default;
+$font-size-h2: $font-size24 !default;
+$font-size-h4: $font-size14 !default;
+
+$h1-margin: 0;
+
+// .btn sizes
+$font-size-base: $font-size16;
+$btn-border-radius: $font-size32;
+$btn-padding-x: $font-size22;
+$btn-padding-y: $font-size7;
+$btn-line-height: $font-size13;
+$btn-icon-margin: 0.2rem;
+
+// Bootstrap components sizes
+
+// TODO: card block paddings are defined as 20px. fix padings on all widgets
+$card-block-base-indent: $font-size20;
+$card-block-vertical-padding: 1.2rem;
+$card-block-horizontal-padding: 0.5rem;
+$card-block-header-margin-bottom: $card-block-base-indent;
+
+$card-deck-margin: 0.75rem;
+
+$container-max-widths: (
+    xs: 142rem
+);
+
+// Kendo override
+$header-background: $white-1;
+$hover-border-color: $gray-3;
+$widget-border-color: $gray-3;
+$border-radius: 0;
+$normal-text-color: $body-color;
+$base-font-size: $font-size14;
+$disabled-border-color: $gray-4;
+    // Dropdowns
+$dropdowns-border-color: $gray-3;
+$dropdowns-hover-border-color: $gray-3;
+    // Grid
+$pager-focused-box-shadow: none;
+$pager-selected-focused-box-shadow: none;
+$pager-hover-background: rgba($ipp-brand, 0.6);
+$pager-selected-hover-background: $ipp-brand;
+$grid-alt-background: $white-1;
+$grid-active-color: $gray-1;
+$grid-background: rgba($gray-4, 0.5);
+
+// Font-weight
+$font-weight-semi-bold: 600;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+
+@import '~bootstrap/scss/variables';

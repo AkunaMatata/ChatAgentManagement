@@ -10,7 +10,7 @@ namespace LoginManagementAPI.Models
 		/// <summary>
 		/// The file id.
 		/// </summary>
-		public Guid FileId { get; set; }
+		public int FileId { get; set; }
 
 		/// <summary>
 		/// The file length.

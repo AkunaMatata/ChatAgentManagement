@@ -1,0 +1,14 @@
+<div class="agent-card {{ie}}" [routerLink]="['user-details', id]">
+    <span class="avatar-container">
+        <img [src]="url" />
+        <span class="agent-card__user-status" [ngClass]="status"></span>
+    </span>
+
+    <div class="agent-card__user-info">
+        <h3>{{ agentName }}</h3>
+        <h4>{{ agentEmail }}</h4>
+    </div>
+    <div class="agent-card__arrow">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+</div>

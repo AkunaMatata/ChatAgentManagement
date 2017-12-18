@@ -1,0 +1,87 @@
+@import "~bootstrap/scss/mixins";
+
+// Custom mixins
+@mixin padding-y($val) {
+    padding-top: $val;
+    padding-bottom: $val;
+}
+
+@mixin padding-x($val) {
+    padding-left: $val;
+    padding-right: $val;
+}
+
+@mixin body-text-regular {
+    font-family: $primary-regular-font-family;
+    font-size: $font-size14;
+    color: $body-color;
+}
+
+@mixin body-text-large {
+    @include body-text-regular;
+    font-size: $font-size16;
+}
+
+@mixin hint-text {
+    font-family: $primary-italic-font-family;
+    font-size: $font-size14;
+    font-style: italic;
+    color: $gray-2;
+}
+
+@mixin text-bolded {
+    font-family: $primary-semibold-font-family;
+}
+
+@mixin flex-container($direction: row, $justification: flex-start, $align-items: stretch,
+                        $wrap: nowrap, $align-content: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justification;
+    align-items: $align-items;
+    flex-wrap: $wrap;
+    align-content: $align-content;
+}
+
+@mixin flex-item($flex-grow: 0, $flex-shrink: 1, $flex-basis: auto, $align-self: auto, $order: 0) {
+    flex: $flex-grow $flex-shrink $flex-basis;
+    align-self: $align-self;
+    order: $order;
+}
+
+@mixin ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin placeholder($font-family) {
+    ::-moz-placeholder {
+        font-family: $font-family;
+        font-style: italic;
+    }
+    ::-webkit-input-placeholder {
+        font-family: $font-family;
+        font-style: italic;
+    }
+    :-moz-placeholder {
+        font-family: $font-family;
+        font-style: italic;
+    }
+    :-ms-input-placeholder {
+        font-family: $font-family;
+        font-style: italic;
+    }
+}
+
+//Bootstrap override
+
+// @mixin button-variant($primary-color, $secondary-color) {
+//     background-color: $primary-color;
+//     color: $secondary-color;
+//     &:hover, &:focus {
+//         outline: none;
+//         background-color: $secondary-color;
+//         color: $primary-color;
+//     }
+// }

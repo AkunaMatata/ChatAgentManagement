@@ -1,0 +1,45 @@
+<div>
+    <ciw-header [title]="title">
+    </ciw-header>
+    <div class="container body col-sm-8">
+        <h2>Account Settings</h2>
+        <div class="form-wrapper">
+            <form>
+                <span class="hint">Only your first name is visible to users. Your last name is kept private anytime.</span>
+                <div class="form-row">
+                    <span class="label"> First name</span>
+                    <input type="text" name="firstName"/>
+                </div>
+                <div class="form-row">
+                    <span class="label"> Last name</span>
+                    <input type="text" name="lastName"/>
+                </div>
+                <span class="hint">Your email is used to send you notifications.</span>
+                <div class="form-row">
+                    <span class="label"> Email</span>
+                    <input type="email" name="email"/>
+                </div>
+                <div class="form-row">
+                    <span class="label"> Permission</span>
+                    <label for="admin">Administrator</label>
+                    <input type="radio" id="admin" name="type" value="Admin"/>
+                    <label for="agent">Agent</label>
+                    <input type="radio" id="agent" name="type" value="Agent"/>
+                </div>
+                <div class="form-row">
+                    <div class="avatar-label">
+                        <span class="label">avatar</span>
+                        <span class="hint">image max 5 MB</span>
+                    </div>
+                    <div class="avatar-wrapper"></div>
+                    <button class="btn btn-link"> change picture</button>
+                </div>
+                <div class="form-row">
+                    <span class="label"> password</span>
+                    <a class="btn btn-link"> change password</a>
+                </div>
+                <div class="form-row">buttons save cancel</div>
+            </form>
+        </div>
+    </div>
+</div>

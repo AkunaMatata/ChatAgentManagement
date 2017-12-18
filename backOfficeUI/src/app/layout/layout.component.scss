@@ -1,0 +1,19 @@
+.app-content .container {
+    margin: 0;
+    padding: 0;
+}
+
+.layout-container {
+    position: absolute;
+    top: 0;
+    left: $left-navigation-menu-width;
+    height: 100%;
+    width: calc(100% - #{$left-navigation-menu-width});
+    background-color: hsla(0,0%,100%,.3);
+    overflow: touch;
+    box-sizing: border-box;
+}
+.container {
+    margin: 0;
+    padding: 0;
+}

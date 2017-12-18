@@ -1,0 +1,101 @@
+$settings_bg_color:  hsla(0,0%,100%,.3);
+$header-height:50px;
+$header-line-height:50px;
+$links-line-height: 30px;
+
+.settings-container {
+    @include padding-x(0);
+    background-color: $settings_bg_color;
+    display:flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .col-left-menu {
+        @include padding-x(0);
+        background-color: #32394f;
+        color: $navigation-color;
+    }
+
+    .view-container {
+        height: 100%;
+        width: 100%;
+    }
+
+    header {
+        display: block;
+        text-align: center;
+        @include padding-x(24px);
+        line-height: $header-line-height;
+        height: $header-height;
+        font-size: 1.06rem;
+        &.col-header {
+            border-bottom: 1px solid #1e2332
+        }
+
+        .title {
+            @include ellipsis();
+        }
+    }
+
+    .category {
+        margin-bottom: 30px;
+        font-size: 1rem;
+        span {
+            color: #fff;
+            display: block;
+            text-transform: uppercase;
+            text-indent: 25px;
+            font-size: 1rem;
+            line-height: 1rem;
+        }
+
+        .item {
+            cursor: pointer;
+            border-left: 4px solid transparent;
+            box-sizing: border-box;
+            color: hsla(0,0%,100%,.5);
+            line-height: $links-line-height;
+            width: 100%;
+            padding: 0 0 0 20px;
+            &:hover {
+                color: #fff;
+            }
+            &.active {
+                border-left: 4px solid #60aaf2;
+                color: #fff;
+            }
+        }
+    }
+
+    .scrollable {
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        line-height: $links-line-height;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex: 1;
+        min-height: 0px; 
+    }
+
+    .overflow-container {
+        flex: 1;
+        overflow: auto;
+    }
+
+    nav {
+        padding: 28px 0;
+        height: 100%;
+    }
+
+    .nav-links {
+        margin-top: 8px;
+    }
+}

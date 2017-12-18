@@ -1,0 +1,34 @@
+<div class="settings-container">
+    <aside class="col-sm-3 col-left-menu">
+        <header class="col-header">
+            <span class="title">Settings</span>
+        </header>
+        <nav class="scrollable">
+            <div class="content-wrapper">
+                <div class="overflow-container">
+                    <ul>
+                        <li class="category"><span>People</span>
+                            <ul class="nav-links">
+                                <li class="item" routerLink="./users" routerLinkActive="active" >Users</li>
+                            </ul>
+                        </li>
+                        <li class="category"><span>Chat</span>
+                            <ul class="nav-links">
+                                <li class="item" routerLink="./chat-customization" routerLinkActive="active" >Customization</li>
+                                <li class="item" routerLink="./general" routerLinkActive="active" >General Settings</li>
+                                <li class="item" routerLink="./shortcuts" routerLinkActive="active" >Shortcuts</li>
+                                <li class="item" routerLink="./chat-assignment" routerLinkActive="active" >Chat Assignment</li>
+                                <li class="item" routerLink="./subscription" routerLinkActive="active" >Subscriptions</li>
+                                <li class="item" routerLink="./integration" routerLinkActive="active" >Integration</li>
+                            </ul>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </aside>
+    <section class="col-sm-9">
+            <router-outlet></router-outlet>
+    </section>
+</div>
