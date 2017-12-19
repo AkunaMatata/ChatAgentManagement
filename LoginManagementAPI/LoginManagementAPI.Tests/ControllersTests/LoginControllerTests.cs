@@ -5,6 +5,7 @@ using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
 using Moq;
+using PersistenceData.Entities;
 using PersistenceData.Models;
 
 namespace LoginManagementAPI.Tests.Controllers
@@ -35,7 +36,7 @@ namespace LoginManagementAPI.Tests.Controllers
 			// Arrange
 			LoginController controller = new LoginController();
 			var fakeModel = new UserViewModel { Email = "testEmail", Password = "12345" };
-			this._mockedLoginService.Setup(x => x.Validate(It.IsAny<UserModel>())).Returns(new UserModel());
+			this._mockedLoginService.Setup(x => x.Validate(It.IsAny<User>())).Returns(new User());
 
 			// Act
 			JsonResult result = controller.Post(fakeModel);

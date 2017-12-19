@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using PersistenceData.Models;
+using PersistenceData.Entities;
 
 namespace PersistenceData.Contexts
 {
@@ -16,6 +16,8 @@ namespace PersistenceData.Contexts
 		/// Gets or sets the users.
 		/// </summary>
 		/// <value>The users</value>
-		public DbSet<UserModel> Users { get; set; }
+		public DbSet<User> Users { get; set; }
+		
 	}
 }
+

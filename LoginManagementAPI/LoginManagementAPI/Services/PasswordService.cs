@@ -21,5 +21,31 @@ namespace LoginManagementAPI.Services
 
 			return BitConverter.ToString(sha1Hash.ComputeHash(bytesSequence)).ToLower().Replace("-", "");
 		}
+
+		/// <summary>
+		/// Generates salt data for password.
+		/// </summary>
+		/// <returns>The salt data.</returns>
+		public byte[] GenerateSalt()
+		{
+			var salt = new byte[20];
+			var random = new Random();
+
+			random.NextBytes(salt);
+
+			return salt;
+		}
+
+		/// <summary>
+		/// Checks password.
+		/// </summary>
+		/// <param name="email">The email.</param>
+		/// <param name="password">The password.</param>
+		/// <returns></returns>
+		private bool CheckPassword(string email, string password)
+		{
+			// get from db salt and pass
+			return true;
+		}
 	}
 }

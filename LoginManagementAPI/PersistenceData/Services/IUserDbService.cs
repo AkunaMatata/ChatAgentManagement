@@ -1,5 +1,4 @@
-﻿using System;
-using PersistenceData.Models;
+﻿using PersistenceData.Entities;
 
 namespace PersistenceData.Services
 {
@@ -9,17 +8,24 @@ namespace PersistenceData.Services
 	public interface IUserDbService
 	{
 		/// <summary>
+		/// Saves customer.
+		/// </summary>
+		/// <param name="customerModel">The customer model.</param>
+		/// <returns>The customer model.</returns>
+		Customer SaveCustomer(Customer customerModel);
+
+		/// <summary>
 		/// Saves new registered user.
 		/// </summary>
 		/// <param name="userModel">The user model.</param>
 		/// <returns>The user model.</returns>
-		UserModel SaveUser(UserModel userModel);
+		User SaveUser(User userModel);
 
 		/// <summary>
 		/// Gets a user by an email.
 		/// </summary>
 		/// <param name="email">The email.</param>
 		/// <returns>The user model.</returns>
-		UserModel GetUserByEmail(string email);
+		User GetUserByEmail(string email);
 	}
 }

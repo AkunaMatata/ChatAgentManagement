@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
-using PersistenceData.Models;
+using PersistenceData.Entities;
 
 namespace LoginManagementAPI.Api.Controllers
 {
@@ -28,9 +28,9 @@ namespace LoginManagementAPI.Api.Controllers
 		public JsonResult Post([FromBody] UserViewModel model)
 		{
 			// TODO models mapping
-			UserModel userModel = new UserModel();
+			User userModel = new User();
 
-			UserModel result = this._loginService.Validate(userModel);
+			User result = this._loginService.Validate(userModel);
 
 			return new JsonResult
 			{

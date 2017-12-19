@@ -11,5 +11,11 @@
 		/// <param name="value"></param>
 		/// <returns>The encoded password value.</returns>
 		string Encode(string value);
+
+		/// <summary>
+		/// Generates salt data for password.
+		/// </summary>
+		/// <returns>The salt data.</returns>
+		byte[] GenerateSalt();
 	}
 }

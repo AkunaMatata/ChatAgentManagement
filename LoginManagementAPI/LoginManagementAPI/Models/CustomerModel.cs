@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PersistenceData.Entities;
 using PersistenceData.Models;
 
 namespace LoginManagementAPI.Models
@@ -24,6 +25,6 @@ namespace LoginManagementAPI.Models
 		/// Gets or sets the users list.
 		/// </summary>
 		/// <value>The users.</value>
-		public IEnumerable<UserModel> Users { get; set; }
+		public IEnumerable<User> Users { get; set; }
 	}
 }

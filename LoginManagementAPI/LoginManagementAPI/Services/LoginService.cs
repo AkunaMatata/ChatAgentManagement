@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Net.Http;
 using System.Net.Mail;
+using System.Text;
 using LoginManagementAPI.Models;
+using PersistenceData.Entities;
 using PersistenceData.Models;
 using ModelStateDictionary = System.Web.Http.ModelBinding.ModelStateDictionary;
 
@@ -68,7 +72,7 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="model">The user model.</param>
 		/// <returns>The user model.</returns>
-		public UserModel Validate(UserModel model)
+		public User Validate(User model)
 		{
 			return model;
 		}
@@ -80,10 +84,15 @@ namespace LoginManagementAPI.Services
 		/// <returns>The user register model.</returns>
 		public RegisterModel Register(RegisterModel model)
 		{
-			if (this.ValidateRegisterModel(model))
+			if (!this.ValidateRegisterModel(model))
 			{
 				return null;
 			}
+
+			//byte[] salt = GenerateSalt();
+
+			var converted = Encoding.UTF8.GetBytes(model.Password);
+			//converted.AddRange(salt);
 
 			UserDataModel userDataModel = this._persistenceService.RegisterUser(model);
 			var registerModel = new RegisterModel {};
@@ -92,5 +101,7 @@ namespace LoginManagementAPI.Services
 
 			return registerModel;
 		}
+
+		
 	}
 }

@@ -109,7 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\LoginControllerTests.cs" />
+    <Compile Include="ControllersTests\LoginControllerTests.cs" />
+    <Compile Include="ServicesTests\PasswordServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

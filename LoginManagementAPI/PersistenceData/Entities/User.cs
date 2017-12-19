@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersistenceData.Models;
 
-namespace PersistenceData.Models
+namespace PersistenceData.Entities
 {
 	/// <summary>
 	/// The user model.
 	/// </summary>
-	public class UserModel
+	public class User
 	{
 		/// <summary>
 		/// The identifier.
@@ -46,5 +47,16 @@ namespace PersistenceData.Models
 		/// The created date.
 		/// </summary>
 		public DateTime CreatedDate { get; set; }
+
+		/// <summary>
+		/// Gets or sets the salt.
+		/// </summary>
+		/// <value>The salt.</value>
+		public Byte[] Salt { get; set; }
+
+		public Customer Customer { get; set; }
+
+		[ForeignKey("Customer")]
+		public int CustomerId { get; set; }
 	}
 }

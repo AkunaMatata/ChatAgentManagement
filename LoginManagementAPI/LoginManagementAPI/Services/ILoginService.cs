@@ -1,5 +1,5 @@
 ﻿using LoginManagementAPI.Models;
-using PersistenceData.Models;
+using PersistenceData.Entities;
 
 namespace LoginManagementAPI.Services
 {
@@ -13,7 +13,7 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="model">The user model.</param>
 		/// <returns>The user model.</returns>
-		UserModel Validate(UserModel model);
+		User Validate(User model);
 
 		/// <summary>
 		/// Registers an user.
