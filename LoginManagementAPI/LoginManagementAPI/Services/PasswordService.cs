@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using LoginManagementAPI.Models;
 
 namespace LoginManagementAPI.Services
 {
@@ -8,6 +9,16 @@ namespace LoginManagementAPI.Services
 	/// </summary>
 	public class PasswordService : IPasswordService
 	{
+		private IPersistenceService _persistenceService;
+
+		/// <summary>
+		/// Initializes new <see cref="PasswordService"/> instance.
+		/// </summary>
+		public PasswordService()
+		{
+			_persistenceService = new PersistenceService();
+		}
+
 		/// <summary>
 		/// Encodes plain password value into cryptographic hashed value for storing in database.
 		/// </summary>
@@ -41,11 +52,16 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="email">The email.</param>
 		/// <param name="password">The password.</param>
-		/// <returns></returns>
-		private bool CheckPassword(string email, string password)
+		/// <returns>The result of password check.</returns>
+		public bool CheckPassword(string email, string password)
 		{
 			// get from db salt and pass
-			return true;
+			UserDataModel userModel = _persistenceService.GetUserByEmail(email);
+
+			string savedPassword = userModel.Password;
+			var actualPassword = string.Concat(Encode(password), userModel.Salt);
+
+			return savedPassword.Equals(actualPassword, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 }

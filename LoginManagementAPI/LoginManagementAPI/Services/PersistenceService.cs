@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using LoginManagementAPI.Models;
 using PersistenceData.Entities;
 using PersistenceData.Services;
@@ -37,6 +38,7 @@ namespace LoginManagementAPI.Services
 
 			model.Password = _passwordService.Encode(model.Password);
 			model.Salt = _passwordService.GenerateSalt();
+			model.Password = string.Concat(model.Password, model.Salt);
 
 			Customer userAddedModel = this._userDbService.SaveCustomer(model);
 
@@ -51,6 +53,24 @@ namespace LoginManagementAPI.Services
 		public UserDataModel GetUserByEmail(string email)
 		{
 			throw new System.NotImplementedException();
+		}
+
+		/// <summary>
+		/// Retrieves all users.
+		/// </summary>
+		/// <returns>The users collection.</returns>
+		public IEnumerable<UserDataModel> GetAllUsers()
+		{
+			IEnumerable<User> users = _userDbService.GetAll();
+			var userModelsList = new List<UserDataModel>();
+
+			foreach (User user in users)
+			{
+				var userModel = new UserDataModel {AgentId = user.Id, CustomerId = user.CustomerId };
+				userModelsList.Add(userModel);
+			}
+
+			return userModelsList;
 		}
 	}
 }

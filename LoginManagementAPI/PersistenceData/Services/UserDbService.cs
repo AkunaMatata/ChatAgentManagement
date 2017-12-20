@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Linq;
@@ -63,6 +64,18 @@ namespace PersistenceData.Services
 				}
 
 				return user;
+			}
+		}
+
+		/// <summary>
+		/// Gets all users.
+		/// </summary>
+		/// <returns>The collection of users.</returns>
+		public IEnumerable<User> GetAll()
+		{
+			using (UserContext dbContext = new UserContext())
+			{
+				return dbContext.Users;
 			}
 		}
 

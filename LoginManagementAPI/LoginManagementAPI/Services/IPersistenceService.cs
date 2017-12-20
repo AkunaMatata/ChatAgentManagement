@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using LoginManagementAPI.Models;
 using PersistenceData.Models;
 
@@ -22,5 +23,11 @@ namespace LoginManagementAPI.Services
 		/// <param name="email">The email.</param>
 		/// <returns>The user data model.</returns>
 		UserDataModel GetUserByEmail(string email);
+
+		/// <summary>
+		/// Retrieves all users.
+		/// </summary>
+		/// <returns>The users collection.</returns>
+		IEnumerable<UserDataModel> GetAllUsers();
 	}
 }

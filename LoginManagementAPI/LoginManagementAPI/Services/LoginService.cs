@@ -96,6 +96,8 @@ namespace LoginManagementAPI.Services
 
 			UserDataModel userDataModel = this._persistenceService.RegisterUser(model);
 			var registerModel = new RegisterModel {};
+			registerModel.AgentId = userDataModel.AgentId;
+			registerModel.CustomerId = userDataModel.CustomerId;
 
 			// TODO populate with agent id and customer id
 

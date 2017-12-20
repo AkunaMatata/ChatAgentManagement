@@ -1,4 +1,5 @@
-﻿using PersistenceData.Entities;
+﻿using System.Collections.Generic;
+using PersistenceData.Entities;
 
 namespace PersistenceData.Services
 {
@@ -27,5 +28,11 @@ namespace PersistenceData.Services
 		/// <param name="email">The email.</param>
 		/// <returns>The user model.</returns>
 		User GetUserByEmail(string email);
+
+		/// <summary>
+		/// Gets all users.
+		/// </summary>
+		/// <returns>The collection of users.</returns>
+		IEnumerable<User> GetAll();
 	}
 }

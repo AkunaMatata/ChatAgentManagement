@@ -17,5 +17,13 @@
 		/// </summary>
 		/// <returns>The salt data.</returns>
 		byte[] GenerateSalt();
+
+		/// <summary>
+		/// Checks password.
+		/// </summary>
+		/// <param name="email">The email.</param>
+		/// <param name="password">The password.</param>
+		/// <returns>The result of password check.</returns>
+		bool CheckPassword(string email, string password);
 	}
 }
