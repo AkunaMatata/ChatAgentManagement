@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './shortcuts-settings.component.html',
     styleUrls: ['./shortcuts-settings.component.scss']
 })
-export class ShortcutSettingsComponent { }
+export class ShortcutSettingsComponent {
+    public title: string = 'Shotrcuts';
+ }

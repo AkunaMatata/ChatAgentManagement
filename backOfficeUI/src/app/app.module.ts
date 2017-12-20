@@ -34,8 +34,8 @@ export function initConfig(
 ) {
 return () => appConfigService.load().then(() => {
   const settings = {
-    apiEndpoint: appConfigService.getApiEndpoint(),
-    options: {
+      apiEndpoint: appConfigService.getApiEndpoint(),
+      options: {
       withCredentials: true
     }
   };

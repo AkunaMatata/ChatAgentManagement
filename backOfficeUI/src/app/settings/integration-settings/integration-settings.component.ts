@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './integration-settings.component.html',
     styleUrls: ['./integration-settings.component.scss']
 })
-export class IntegrationSettingsComponent { }
+export class IntegrationSettingsComponent {
+    public title: string = 'Intergation';
+}

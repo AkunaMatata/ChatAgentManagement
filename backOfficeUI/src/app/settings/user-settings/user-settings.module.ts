@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
@@ -7,11 +8,16 @@ import { AgentCardComponent } from './agent-card/agent-card.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AgentPanelComponent } from './agent-panel/agent-panel.component';
+import { RadiobuttonModule } from '../../../controls/radiobutton/radiobutton.module';
 
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule, SharedModule
+        CommonModule,
+        RouterModule,
+        SharedModule,
+        FormsModule,
+        RadiobuttonModule
     ],
     declarations: [
         UserSettingsComponent,

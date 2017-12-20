@@ -1,5 +1,6 @@
 $background-color-menu: #1d253a;
-$navigation-color:#fff;
+$navigation-color:rgba(255, 255, 255, 0.596);
+$navigation-color_active: #fff;
 
 .left-navigation {
     background-color: $background-color-menu;
@@ -32,6 +33,10 @@ li {
     justify-content: center;
     &.active {
         border-left: 4px solid #60aaf2;
+        color: $navigation-color_active;
+        a {
+            color: $navigation-color_active;
+        }
     }
 }
 a {

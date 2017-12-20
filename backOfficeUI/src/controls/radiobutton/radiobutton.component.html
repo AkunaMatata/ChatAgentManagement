@@ -1,0 +1,13 @@
+<input class="ciw-radiobutton__input"
+        type="radio"
+        [name]="name"
+        [value]="value"
+        [disabled]="disabled"
+        [id]="id"
+        [tabindex]="tabindex"
+        (change)="handleChange()"
+        (focus)="onFocus()"
+        (blur)="onBlur()"/>
+<label class="ciw-radiobutton__label" [for]="id">
+    <ng-content></ng-content>
+</label>

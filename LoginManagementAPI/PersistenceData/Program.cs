@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using PersistenceData.Contexts;
+using PersistenceData.Entities;
 using PersistenceData.Models;
 using PersistenceData.Services;
 
@@ -34,7 +35,7 @@ namespace PersistenceData
 
 			var userDbService = new UserDbService();
 
-			UserModel user = userDbService.GetUserByEmail("john@gmail.com");
+			User user = userDbService.GetUserByEmail("john@gmail.com");
 			Console.WriteLine("Id: {0} Email: {1} Password: {2} Created Date: {3}", user.Id, user.Email, user.Password, user.CreatedDate);
 			Console.ReadKey();
 		}

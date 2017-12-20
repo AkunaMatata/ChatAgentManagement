@@ -18,11 +18,11 @@ export class ChatAssignmentActionCreator {
 
     public loadAssignments() {
         return dispatch => this.chatAssignmentProvider.fetch().then(
-                assignment => dispatch(this.SetAssignment(assignment))
+                assignment => dispatch(this.setAssignment(assignment))
         )
     }
 
-    public SetAssignment(payload: any): Action {
+    public setAssignment(payload: any): Action {
         return {
             type: ChatAssignmentActions.SET_MODE,
             payload: payload

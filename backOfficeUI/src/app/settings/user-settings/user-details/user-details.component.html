@@ -8,23 +8,23 @@
                 <span class="hint">Only your first name is visible to users. Your last name is kept private anytime.</span>
                 <div class="form-row">
                     <span class="label"> First name</span>
-                    <input type="text" name="firstName"/>
+                    <input type="text" [(ngModel)]="firstName" name="firstName"/>
                 </div>
                 <div class="form-row">
                     <span class="label"> Last name</span>
-                    <input type="text" name="lastName"/>
+                    <input type="text" [(ngModel)]="lastName" name="lastName"/>
                 </div>
                 <span class="hint">Your email is used to send you notifications.</span>
                 <div class="form-row">
                     <span class="label"> Email</span>
-                    <input type="email" name="email"/>
+                    <input type="email" [(ngModel)]="email" name="email"/>
                 </div>
                 <div class="form-row">
                     <span class="label"> Permission</span>
-                    <label for="admin">Administrator</label>
-                    <input type="radio" id="admin" name="type" value="Admin"/>
-                    <label for="agent">Agent</label>
-                    <input type="radio" id="agent" name="type" value="Agent"/>
+                    <div class="radio-group">
+                        <ciw-radiobutton [id]="'Admin'" [(ngModel)]="role" name="role" value="'Admin'"> Administrator</ciw-radiobutton>
+                        <ciw-radiobutton [id]="'Agent'" [(ngModel)]="role" name="role" value="'Agent'"> Agent</ciw-radiobutton>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="avatar-label">
@@ -38,7 +38,16 @@
                     <span class="label"> password</span>
                     <a class="btn btn-link"> change password</a>
                 </div>
-                <div class="form-row">buttons save cancel</div>
+                <div class="action-buttons">
+                        <button class="btn" type="reset" [disabled]="!isDirty"
+                        (click)="onReset()" >
+                            <span class="no-select">Discard</span>
+                        </button>
+                        <button class="btn btn-primary" type="submit" [disabled]="!isDirty"
+                        (click)="onSave()">
+                            <span class="no-select">Save changes</span>
+                        </button>
+                    </div>
             </form>
         </div>
     </div>

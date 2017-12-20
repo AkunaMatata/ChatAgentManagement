@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './chat-customization-settings.component.html',
     styleUrls: ['./chat-customization-settings.component.scss']
 })
-export class ChatCustomizationComponent { }
+export class ChatCustomizationComponent {
+    public title: string = 'Chat customization';
+}

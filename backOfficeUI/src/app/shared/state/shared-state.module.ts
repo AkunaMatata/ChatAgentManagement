@@ -3,13 +3,15 @@ import { Store } from './store';
 import { NgReduxModule } from '@angular-redux/store';
 
 import { UiStateModule } from './ui/ui-state.module';
+import { SettingsModule } from './settings/settings.module';
 
 
 @NgModule(
     {
         imports: [NgReduxModule],
         exports: [
-            UiStateModule
+            UiStateModule,
+            SettingsModule
         ],
         providers: [
             {

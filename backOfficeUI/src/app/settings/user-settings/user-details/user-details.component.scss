@@ -22,8 +22,24 @@ form {
         margin-right: 20px;
     }
 
+    .radio-group{
+        @include flex-container(column, flex-start, flex-start);
+    }
+
     .form-input {
         color: $form-input-color;
+    }
+}
+.action-buttons{
+    @include flex-container(row, flex-end, flex-start);
+    margin-right: auto;
+    
+    .btn {
+        height: 36px;
+        line-height: 34px;
+        padding: 0 10px;
+        min-width: 90px;
+        font-size: 14px;
     }
 }
 

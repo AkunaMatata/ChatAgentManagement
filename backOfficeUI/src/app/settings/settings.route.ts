@@ -9,19 +9,20 @@ import { ShortcutSettingsComponent } from './shortcuts-settings/shortcuts-settin
 import { SubscriptionSettingsComponent } from './subscriptions-settings/subscriptions-settings.component';
 import { UserDetailsComponent } from './user-settings/user-details/user-details.component';
 import { AddUserComponent } from './user-settings/add-user/add-user.component';
+import { EditModeResolver } from '../shared/services/editmodeResolver';
 
 const routes: Routes = [
     {
         path: 'settings',
         component: SettingsComponent,
         children: [
-            { path: '', redirectTo: 'users', pathMatch:'full' },
-            { 
+            { path: '', redirectTo: 'users', pathMatch: 'full' },
+            {
                 path: 'users',
                 component: UserSettingsComponent,
                 children: [
-                    { path: 'add-user', component: AddUserComponent },
-                    { path: 'user-details/:id', component: UserDetailsComponent },
+                    { path: 'add-user', component: AddUserComponent, resolve: { state: EditModeResolver} },
+                    { path: 'user-details/:id', component: UserDetailsComponent, resolve: { state: EditModeResolver} },
                 ]
          },
             { path: 'chat-customization', component: ChatCustomizationComponent },
@@ -30,8 +31,6 @@ const routes: Routes = [
             { path: 'shortcuts', component: ShortcutSettingsComponent },
             { path: 'integration', component: IntegrationSettingsComponent },
             { path: 'subscription', component: SubscriptionSettingsComponent },
-            // { path: 'add-user', component: AddUserComponent },
-            // { path: 'user-details', component: UserDetailsComponent },
         ]
     }
 ];
