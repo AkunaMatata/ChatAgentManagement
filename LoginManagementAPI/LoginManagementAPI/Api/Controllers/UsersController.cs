@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Mvc;
-using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
 
@@ -15,7 +10,7 @@ namespace LoginManagementAPI.Api.Controllers
 	/// </summary>
 	public class UsersController : ApiController
 	{
-		private IUserService _userService;
+		private readonly IUserService _userService;
 
 		/// <summary>
 		/// Initializes new <see cref="UsersController"/> instance.
@@ -29,12 +24,11 @@ namespace LoginManagementAPI.Api.Controllers
 		/// The get all users action.
 		/// </summary>
 		/// <returns>The registration result.</returns>
-		[System.Web.Mvc.HttpGet]
-		[System.Web.Http.Route("api/users/getall")]
-		public JsonResult GetAll()
+		[HttpGet]
+		public IHttpActionResult Get()
 		{
 			IEnumerable<UserDetails> usersList = _userService.GetAllUsers();
-			var result = new JsonResult { Data = usersList };
+		    var result = Ok(usersList);
 
 			return result;
 		}
@@ -43,14 +37,13 @@ namespace LoginManagementAPI.Api.Controllers
 		/// The get all users action.
 		/// </summary>
 		/// <returns>The registration result.</returns>
-		[System.Web.Mvc.HttpGet]
-		[System.Web.Http.Route("api/users/{userId}")]
-		public JsonResult GetById([FromUri] int userId)
+		[HttpGet]
+		public IHttpActionResult Get(int id)
 		{
-			UserDetails usersList = _userService.GetById(userId);
-			var result = new JsonResult { Data = usersList };
+			UserDetails usersList = _userService.GetById(id);
+		    var result = Ok(usersList);
 
-			return new JsonResult { Data = result };
+			return result;
 		}
 	}
 }
