@@ -1,0 +1,5 @@
+export const ShortcutsActions = {
+    ADD_SHORTCUTS: 'SHORTCUTS_ADD',
+    EDIT_SHORTCUTS: 'SHORTCUTS_EDIT',
+    LOAD_SHORTCUTS: 'SHORTCUTS_LOAD'
+};

@@ -1,0 +1,24 @@
+/*Vendors' styles*/
+@import '~bootstrap/scss/bootstrap-grid';
+// Core variables and mixins
+
+// Reset and dependencies
+@import "~bootstrap/scss/normalize";
+
+// Core CSS
+@import "~bootstrap/scss/reboot"; // Bootstrap clearfix/normalize etc.
+@import "~bootstrap/scss/type"; // Bootstrap typography
+
+@import "~bootstrap/scss/forms";
+
+
+// Components
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/buttons";
+
+// Utility classes
+@import "~bootstrap/scss/utilities";

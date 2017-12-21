@@ -1,0 +1,104 @@
+$form-label-color: rgba(90,105,118,.5);
+$form-input-color: #5a6976;
+
+.view-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 20px;
+    font-size: 16px;
+    > :first-child {
+        margin-bottom: 10px;
+    }
+
+    .label {
+        color: $form-label-color;
+        display: inline-block;
+        width: 100px;
+        margin-right: 20px;
+    }
+
+    input {
+        color: $form-input-color;
+        border-radius: 4px;
+        background-color: #f8fafb;
+        border: 1px solid #cfd5db;
+        padding: 0 10px 0 10px;
+    }
+
+    .btn {
+        &.btn-link {
+        font-size: 1rem;
+        color: $default-link-color;
+        }
+    }
+    .radio-group{
+        @include flex-container(column, flex-start, flex-start);
+    }
+
+    .form-input {
+        color: $form-input-color;
+    }
+
+    .avatar-wrapper-section {
+        width: 7.5rem;
+        height: 5rem;
+        color: #9b9b9b;
+        @include flex-container(row, flex-end, center);
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border: 1px solid #cfd5db;
+        cursor: pointer;
+        i {
+            font-size:  2.5rem;
+        }
+        .user-icon {
+            margin-right: auto;
+            height: 5rem;
+            width: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: 1px solid #cfd5db;
+            background-color: rgb(231, 224, 224);
+        }
+    }
+}
+.action-buttons{
+    @include flex-container(row, flex-end, flex-start);
+    margin-right: auto;
+    
+    .btn {
+        height: 36px;
+        line-height: 34px;
+        padding: 0 10px;
+        min-width: 90px;
+        font-size: 14px;
+    }
+}
+
+.body {
+    background-color: #eaf1f5;
+}
+.form-wrapper {
+    padding: 30px 30px;
+}
+.form-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    margin-bottom: 25px;
+}
+.avatar-label {
+    display: flex;
+    flex-direction: column;
+}

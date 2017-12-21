@@ -1,0 +1,9 @@
+.no-padding {
+    @include padding-x(0);
+    &-l {
+        padding-left: 0;
+    }
+    &-r {
+        padding-right: 0;
+    }
+}

@@ -53,6 +53,13 @@ __build__/**
 # IDE #
 .idea/
 *.swp
+*.dll
+bin/
+obj/
+packages/
+.vs/
+dev/
+.vscode/
 
 node_modules/
 dev/

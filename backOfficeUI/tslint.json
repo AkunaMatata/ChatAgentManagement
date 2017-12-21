@@ -9,7 +9,7 @@
       "check-space"
     ],
     "curly": true,
-    "eofline": true,
+    "eofline": false,
     "forin": true,
     "indent": [
       true,
@@ -41,7 +41,7 @@
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-eval": true,
-    "no-inferrable-types": true,
+    "no-inferrable-types": false,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
@@ -88,18 +88,18 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "my",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "my",
-      "kebab-case"
-    ],
+    // "directive-selector": [
+    //   true,
+    //   "attribute",
+    //   "my",
+    //   "camelCase"
+    // ],
+    // "component-selector": [
+    //   true,
+    //   "element",
+    //   "my",
+    //   "kebab-case"
+    // ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -119,6 +119,7 @@
     "import-destructuring-spacing": true,
     "no-access-missing-member": true,
     "templates-use-public": true,
-    "invoke-injectable": true
+    "invoke-injectable": true,
+    "no-unused-variable": true
   }
 }

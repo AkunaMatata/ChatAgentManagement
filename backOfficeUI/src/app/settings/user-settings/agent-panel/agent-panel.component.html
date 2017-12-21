@@ -1,0 +1,22 @@
+<div class="agent-panel">
+    <div class="wrapper">
+        <ul class="nav nav-tabs">
+            <li class="nav__item active" data-toggle="tab" aria-expanded="true">
+                <span class="info"> All ({{totalCount}})</span>
+            </li>
+            <li class="nav__item" data-toggle="tab">
+                <span class="status accept"></span><span class="info"> Accepting chats ({{availableCount}})</span>
+            </li>
+            <li class="nav__item" data-toggle="tab">
+                <span class="status busy"></span><span class="info"> Not accepting chats ({{busyCount}})</span>
+            </li>
+            <li class="nav__item" data-toggle="tab">
+                <span class="status offline"></span><span class="info">  Offline  ({{offlineCount}})</span>
+            </li>
+        </ul>
+    </div>
+    <div class="search">
+        <input type="text" class="with-icon form-input" placeholder="search "/>
+        <span class="icon"><i class="fa fa-search"></i></span>
+    </div>
+</div>
