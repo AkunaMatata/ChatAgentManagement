@@ -1,29 +1,28 @@
 <div>
-    <ciw-header [title]="title">
-    </ciw-header>
+    <ciw-header [title]="title"></ciw-header>
     <div class="container body col-sm-8">
         <h2>Account Settings</h2>
         <div class="form-wrapper">
-            <form>
+            <form [formGroup]="detailsForm" >
                 <span class="hint">Only your first name is visible to users. Your last name is kept private anytime.</span>
                 <div class="form-row">
                     <span class="label"> First name</span>
-                    <input type="text" [(ngModel)]="firstName" name="firstName"/>
+                    <input type="text" formControlName="firstName" />
                 </div>
                 <div class="form-row">
                     <span class="label"> Last name</span>
-                    <input type="text" [(ngModel)]="lastName" name="lastName"/>
+                    <input type="text" formControlName="lastName" n/>
                 </div>
                 <span class="hint">Your email is used to send you notifications.</span>
                 <div class="form-row">
                     <span class="label"> Email</span>
-                    <input type="email" [(ngModel)]="email" name="email"/>
+                    <input type="email" formControlName="email" name="email"/>
                 </div>
                 <div class="form-row">
                     <span class="label"> Permission</span>
                     <div class="radio-group">
-                        <ciw-radiobutton [id]="'Admin'" [(ngModel)]="role" name="role" value="'Admin'"> Administrator</ciw-radiobutton>
-                        <ciw-radiobutton [id]="'Agent'" [(ngModel)]="role" name="role" value="'Agent'"> Agent</ciw-radiobutton>
+                        <ciw-radiobutton [id]="'Admin'" formControlName="role" name="role" value="Admin"> Administrator</ciw-radiobutton>
+                        <ciw-radiobutton [id]="'Agent'" formControlName="role" name="role" value="Agent"> Agent</ciw-radiobutton>
                     </div>
                 </div>
                 <div class="form-row">
@@ -31,19 +30,23 @@
                         <span class="label">avatar</span>
                         <span class="hint">image max 5 MB</span>
                     </div>
-                    <div class="avatar-wrapper"></div>
-                    <button class="btn btn-link"> change picture</button>
+                    <div class="avatar-wrapper-section">
+                        <div class="user-icon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="form-row">
                     <span class="label"> password</span>
                     <a class="btn btn-link"> change password</a>
                 </div>
                 <div class="action-buttons">
-                        <button class="btn" type="reset" [disabled]="!isDirty"
-                        (click)="onReset()" >
+                        <button class="btn" type="reset" [disabled]="!detailsForm.dirty"
+                        (click)="onDiscard()" >
                             <span class="no-select">Discard</span>
                         </button>
-                        <button class="btn btn-primary" type="submit" [disabled]="!isDirty"
+                        <button class="btn btn-primary" type="button" [disabled]="!detailsForm.dirty"
                         (click)="onSave()">
                             <span class="no-select">Save changes</span>
                         </button>
