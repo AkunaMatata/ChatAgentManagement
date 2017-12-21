@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { EditActionCreator } from '../../../shared/state/ui/settings/shared/edit-action-creator';
@@ -14,13 +15,19 @@ export class AddUserComponent implements OnInit, OnDestroy {
     private readonly editActionCreator: EditActionCreator;
     private readonly store: Store<RootStateInterface>;
     private readonly router: Router;
+    private readonly location: Location;
     public title: string = 'Add user';
     public addUserForm: FormGroup;
 
-    constructor(editActionCreator: EditActionCreator, store: Store<RootStateInterface>, router: Router ) {
+    constructor(
+        editActionCreator: EditActionCreator,
+        store: Store<RootStateInterface>,
+        router: Router,
+        location: Location) {
         this.store = store;
         this.editActionCreator = editActionCreator;
         this.router = router;
+        this.location = location;
      }
 
     public ngOnInit() {
@@ -42,6 +49,6 @@ export class AddUserComponent implements OnInit, OnDestroy {
     }
 
     public onAdd() {
-        return;
+        this.location.back();
     }
  }

@@ -15,6 +15,7 @@ import { ShortcutSettingsComponent } from './shortcuts-settings/shortcuts-settin
 import { SubscriptionSettingsComponent } from './subscriptions-settings/subscriptions-settings.component';
 import { RadiobuttonModule } from '../../controls/radiobutton/radiobutton.module';
 import { SettingsRoute } from './settings.route';
+import { DataAccessModule } from '../../infrastructure/data-access/data-access.module';
 
 @NgModule(
     {
@@ -27,6 +28,7 @@ import { SettingsRoute } from './settings.route';
             ShortcutsModule,
             BrowserModule,
             SharedModule,
+            DataAccessModule,
             RadiobuttonModule
         ],
         declarations: [

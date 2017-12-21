@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { UrlConstants } from '../../../shared/constants/url-constants';
 import { EditActionCreator } from '../../../shared/state/ui/settings/shared/edit-action-creator';
+import { UserDetailsActionCreator } from '../../../shared/state/settings/user-settings/user-details/user-details-action-creator';
 import { Store } from '../../../shared/state/store';
 import { RootStateInterface } from '../../../shared/state/root-state-interface';
 
@@ -13,6 +14,7 @@ import { RootStateInterface } from '../../../shared/state/root-state-interface';
 export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     private readonly editActionCreator: EditActionCreator;
     private readonly store: Store<RootStateInterface>;
+    private readonly userActionCreator: UserDetailsActionCreator;
     public detailsForm: FormGroup;
     public title: string = 'firstname';
     public firstName: string;
@@ -22,9 +24,13 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     public password: string;
     public avatarUrl: string = UrlConstants.DefaultLogo;
 
-    constructor(editActionCreator: EditActionCreator, store: Store<RootStateInterface> ) {
+    constructor(
+        editActionCreator: EditActionCreator,
+        store: Store<RootStateInterface>,
+        userActionCreator: UserDetailsActionCreator ) {
         this.store = store;
         this.editActionCreator = editActionCreator;
+        this.userActionCreator = userActionCreator;
     }
 
     public ngOnInit() {
@@ -34,7 +40,15 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
             email: new FormControl(null, [Validators.required, Validators.email]),
             role: new FormControl(null, Validators.required)
         })
-        this.detailsForm.valueChanges.subscribe(data => console.log('Form changes', data));
+
+        this.store.dispatchAsync(
+            this.userActionCreator.getAgentDetails(4)
+        );
+        this.store.select(store => store.settings.userSettings.selectedAgent)
+            .filter(x => x.UserId !== undefined)
+            .subscribe(agent => {
+                this.setupForm(agent);
+            });
     }
 
     public ngOnDestroy() {
@@ -50,6 +64,20 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     public onSave() {
-        
+        this.store.dispatchAsync(
+            this.userActionCreator.saveAgentDetails(this.detailsForm.value)
+        )
+    }
+
+    private setupForm(agent) {
+        this.detailsForm.setValue({
+            firstName: agent.Name,
+            lastName: '',
+            email: agent.Email,
+            role: agent.Role || 'Agent',
+        })
+        this.detailsForm.markAsPristine();
+        this.detailsForm.markAsUntouched();
+        this.detailsForm.valueChanges.subscribe(data => console.log('Form changes', data));
     }
 }

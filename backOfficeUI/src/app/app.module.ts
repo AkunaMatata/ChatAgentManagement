@@ -16,6 +16,8 @@ import { SettingsModule } from './settings/settings.module';
 import { DataAccessModule } from '../infrastructure/data-access/data-access.module';
 import { SharedStateModule } from './shared/state/shared-state.module';
 import { Store } from './shared/state/store';
+import { DataProvidersFactoryProvider }
+    from '../infrastructure/data-access/data-providers/data-providers-factory-provider';
 
 import { configureState } from './shared/state/state-config';
 import { RootStateInterface } from './shared/state/root-state-interface';
@@ -30,6 +32,7 @@ function configureStateAndSetCurrentUser(store: Store<RootStateInterface>, user:
 export function initConfig(
           appConfigService: AppConfigService,
           store: Store<RootStateInterface>,
+          factoryProvider: DataProvidersFactoryProvider,
           currentUserLoader: UserLoader
 ) {
 return () => appConfigService.load().then(() => {
@@ -39,7 +42,7 @@ return () => appConfigService.load().then(() => {
       withCredentials: true
     }
   };
-
+  factoryProvider.configure(settings);
   return currentUserLoader.load(appConfigService.getApiEndpoint())
   .then(
       currentUser => {
@@ -74,7 +77,7 @@ return () => appConfigService.load().then(() => {
     {
       provide: APP_INITIALIZER,
       useFactory: initConfig,
-      deps: [AppConfigService, Store, UserLoader],
+      deps: [AppConfigService, Store, DataProvidersFactoryProvider, UserLoader],
       multi: true
     },
   ],

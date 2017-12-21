@@ -15,7 +15,7 @@ const appConfigPaths: AppConfigMetadataModel = {
 
 @Injectable()
 export class AppConfigService implements AppConfigServiceInterface {
-    private static DEFAULT_API_LOCATION: string = '/fake/';
+    private static DEFAULT_API_LOCATION: string = 'http://localhost/LoginManagementAPI/api/';
     private appConfigLoader: AppConfigLoader<AppConfigModel>;
     private config: AppConfigModel = null;
 

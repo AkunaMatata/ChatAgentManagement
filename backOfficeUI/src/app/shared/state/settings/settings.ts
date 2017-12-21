@@ -1,6 +1,7 @@
 import { ChatSettings } from './chat-settings/chat-settings';
+import { UserSettings } from './user-settings/user-settings';
 
 export interface Settings {
-    userSettings;
+    userSettings: UserSettings;
     chatSettings: ChatSettings;
 };
