@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using PersistenceData.Entities;
 using PersistenceData.Services;
@@ -26,7 +27,7 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="registerModel">The register model.</param>
 		/// <returns>The user data model.</returns>
-		public UserDataModel RegisterUser(RegisterModel registerModel)
+		public UserDataModel RegisterUser(RegisterViewModel registerModel)
 		{
 			// TODO models mapping
 			var model = new Customer
@@ -42,7 +43,7 @@ namespace LoginManagementAPI.Services
 
 			Customer userAddedModel = this._userDbService.SaveCustomer(model);
 
-			return new UserDataModel { AgentId = userAddedModel.Users.First().Id, Role = userAddedModel.Users.First().Role };
+			return new UserDataModel { CustomerId = userAddedModel.Id, AgentId = userAddedModel.Users.First().Id, Role = userAddedModel.Users.First().Role };
 		}
 
 		/// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using PersistenceData.Models;
 
@@ -15,7 +16,7 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="registerModel">The register model.</param>
 		/// <returns>The user data model.</returns>
-		UserDataModel RegisterUser(RegisterModel registerModel);
+		UserDataModel RegisterUser(RegisterViewModel registerModel);
 
 		/// <summary>
 		/// Gets a user by email.

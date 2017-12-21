@@ -49,9 +49,9 @@ namespace LoginManagementAPI.Api.Controllers
 		public JsonResult Register(RegisterViewModel model)
 		{
 			//TODO models mapping
-			var registerModel = new RegisterModel { Email = model.Email, FullName = model.FullName, Password = model.Password };
+			//var registerModel = new RegisterModel { Email = model.Email, FullName = model.FullName, Password = model.Password };
 			
-			RegisterModel updatedModel = this._loginService.Register(registerModel);
+			RegisterModel updatedModel = this._loginService.Register(model);
 
 			var result = new JsonResult {Data = updatedModel != null ? (object) updatedModel : this.ModelState};
 

@@ -1,4 +1,5 @@
-﻿using LoginManagementAPI.Models;
+﻿using LoginManagementAPI.Api.ViewModels;
+using LoginManagementAPI.Models;
 using PersistenceData.Entities;
 
 namespace LoginManagementAPI.Services
@@ -20,6 +21,6 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="model">The register model.</param>
 		/// <returns>The user register model.</returns>
-		RegisterModel Register(RegisterModel model);
+		RegisterModel Register(RegisterViewModel model);
 	}
 }

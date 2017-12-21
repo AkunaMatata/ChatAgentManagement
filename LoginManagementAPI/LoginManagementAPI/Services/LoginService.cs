@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Mail;
 using System.Text;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using PersistenceData.Entities;
 using PersistenceData.Models;
@@ -24,7 +25,7 @@ namespace LoginManagementAPI.Services
 			this._persistenceService = new PersistenceService();
 		}
 
-		private bool ValidateRegisterModel(RegisterModel registerModel)
+		private bool ValidateRegisterModel(RegisterViewModel registerModel)
 		{
 			if (registerModel == null)
 			{
@@ -82,24 +83,21 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="model">The register model.</param>
 		/// <returns>The user register model.</returns>
-		public RegisterModel Register(RegisterModel model)
+		public RegisterModel Register(RegisterViewModel model)
 		{
 			if (!this.ValidateRegisterModel(model))
 			{
 				return null;
 			}
 
-			//byte[] salt = GenerateSalt();
-
-			var converted = Encoding.UTF8.GetBytes(model.Password);
-			//converted.AddRange(salt);
-
 			UserDataModel userDataModel = this._persistenceService.RegisterUser(model);
-			var registerModel = new RegisterModel {};
-			registerModel.AgentId = userDataModel.AgentId;
-			registerModel.CustomerId = userDataModel.CustomerId;
 
-			// TODO populate with agent id and customer id
+			var registerModel = new RegisterModel
+			{
+				AgentId = userDataModel.AgentId,
+				CustomerId = userDataModel.CustomerId,
+				Role = userDataModel.Role.ToString()
+			};
 
 			return registerModel;
 		}
