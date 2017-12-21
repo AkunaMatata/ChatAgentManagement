@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using PersistenceData.Entities;
 using PersistenceData.Services;
@@ -25,7 +27,7 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="registerModel">The register model.</param>
 		/// <returns>The user data model.</returns>
-		public UserDataModel RegisterUser(RegisterModel registerModel)
+		public UserDataModel RegisterUser(RegisterViewModel registerModel)
 		{
 			// TODO models mapping
 			var model = new Customer
@@ -37,10 +39,11 @@ namespace LoginManagementAPI.Services
 
 			model.Password = _passwordService.Encode(model.Password);
 			model.Salt = _passwordService.GenerateSalt();
+			model.Password = string.Concat(model.Password, model.Salt);
 
 			Customer userAddedModel = this._userDbService.SaveCustomer(model);
 
-			return new UserDataModel { AgentId = userAddedModel.Users.First().Id, Role = userAddedModel.Users.First().Role };
+			return new UserDataModel { CustomerId = userAddedModel.Id, AgentId = userAddedModel.Users.First().Id, Role = userAddedModel.Users.First().Role };
 		}
 
 		/// <summary>
@@ -51,6 +54,37 @@ namespace LoginManagementAPI.Services
 		public UserDataModel GetUserByEmail(string email)
 		{
 			throw new System.NotImplementedException();
+		}
+
+		/// <summary>
+		/// Retrieves all users.
+		/// </summary>
+		/// <returns>The users collection.</returns>
+		public IEnumerable<UserDataModel> GetAllUsers()
+		{
+			IEnumerable<User> users = _userDbService.GetAll();
+			var userModelsList = new List<UserDataModel>();
+
+			foreach (User user in users)
+			{
+				var userModel = new UserDataModel { AgentId = user.Id, CustomerId = user.CustomerId, Name = user.Name, Email = user.Email };
+				userModelsList.Add(userModel);
+			}
+
+			return userModelsList;
+		}
+
+		/// <summary>
+		/// Gets user by id.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <returns>The use data model.</returns>
+		public UserDataModel GetUserById(int id)
+		{
+			User userEntiry = _userDbService.GetUserById(id);
+			var userModel = new UserDataModel { AgentId = userEntiry.Id, CustomerId = userEntiry.CustomerId, Name = userEntiry.Name, Email = userEntiry.Email };
+
+			return userModel;
 		}
 	}
 }

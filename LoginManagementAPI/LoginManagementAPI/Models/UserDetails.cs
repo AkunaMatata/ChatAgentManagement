@@ -13,12 +13,13 @@
 		/// <summary>
 		/// The first name.
 		/// </summary>
-		public string FirstName { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
-		/// The last name.
+		/// Gets or sets the email.
 		/// </summary>
-		public string LastName { get; set; }
+		/// <value>The email.</value>
+		public string Email { get; set; }
 
 		/// <summary>
 		/// The address.

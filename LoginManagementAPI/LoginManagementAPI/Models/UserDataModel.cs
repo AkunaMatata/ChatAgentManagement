@@ -1,5 +1,4 @@
-﻿using System;
-using PersistenceData.Models;
+﻿using PersistenceData.Models;
 
 namespace LoginManagementAPI.Models
 {
@@ -21,9 +20,33 @@ namespace LoginManagementAPI.Models
 		public int CustomerId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		/// <value>The name.</value>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the email.
+		/// </summary>
+		/// <value>The email.</value>
+		public string Email { get; set; }
+
+		/// <summary>
 		/// Gets or sets the role.
 		/// </summary>
 		/// <value>The role.</value>
 		public Role Role { get; set; }
+
+		/// <summary>
+		/// Gets or sets the password.
+		/// </summary>
+		/// <value>The password.</value>
+		public string Password { get; set; }
+
+		/// <summary>
+		/// Gets or sets the salt.
+		/// </summary>
+		/// <value>The salt.</value>
+		public string Salt { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core;
+using System.Globalization;
 using System.Linq;
 using PersistenceData.Contexts;
 using PersistenceData.Entities;
@@ -14,8 +16,8 @@ namespace PersistenceData.Services
 	{
 		public UserDbService()
 		{
-			Database.SetInitializer<UserContext>(new DropCreateDatabaseAlways<UserContext>());
-			Database.SetInitializer<CustomerContext>(new DropCreateDatabaseAlways<CustomerContext>());
+//			Database.SetInitializer<UserContext>(new DropCreateDatabaseAlways<UserContext>());
+//			Database.SetInitializer<CustomerContext>(new DropCreateDatabaseAlways<CustomerContext>());
 		}
 
 		/// <summary>
@@ -64,6 +66,44 @@ namespace PersistenceData.Services
 
 				return user;
 			}
+		}
+
+		/// <summary>
+		/// Gets all users.
+		/// </summary>
+		/// <returns>The collection of users.</returns>
+		public IEnumerable<User> GetAll()
+		{
+			IList<User> users;
+
+			using (UserContext dbContext = new UserContext())
+			{
+				users = dbContext.Users.ToList();
+			}
+
+			return users;
+		}
+
+		/// <summary>
+		/// Gets user by id.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns>The user entity.</returns>
+		public User GetUserById(int id)
+		{
+			User user;
+
+			using (UserContext dbContext = new UserContext())
+			{
+				user = dbContext.Users.FirstOrDefault(x => x.Id == id);
+			}
+
+			if (user == null)
+			{
+				throw new ObjectNotFoundException(string.Format(CultureInfo.InvariantCulture, "The user with id {0} was not found.", id));
+			}
+
+			return user;
 		}
 
 		/// <summary>

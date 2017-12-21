@@ -52,7 +52,7 @@ namespace PersistenceData.Entities
 		/// Gets or sets the salt.
 		/// </summary>
 		/// <value>The salt.</value>
-		public Byte[] Salt { get; set; }
+		public string Salt { get; set; }
 
 		public Customer Customer { get; set; }
 
