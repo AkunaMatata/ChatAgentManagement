@@ -34,5 +34,12 @@ namespace PersistenceData.Services
 		/// </summary>
 		/// <returns>The collection of users.</returns>
 		IEnumerable<User> GetAll();
+
+		/// <summary>
+		/// Gets user by id.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns>The user entity.</returns>
+		User GetUserById(int id);
 	}
 }

@@ -29,5 +29,12 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <returns>The users collection.</returns>
 		IEnumerable<UserDataModel> GetAllUsers();
+
+		/// <summary>
+		/// Gets user by id.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <returns>The use data model.</returns>
+		UserDataModel GetUserById(int id);
 	}
 }

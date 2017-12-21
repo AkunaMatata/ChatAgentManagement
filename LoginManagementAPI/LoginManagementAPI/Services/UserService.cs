@@ -29,7 +29,7 @@ namespace LoginManagementAPI.Services
 
 			foreach (UserDataModel model in users)
 			{
-				usersList.Add(new UserDetails { UserId = model.AgentId });
+				usersList.Add(new UserDetails { UserId = model.AgentId, Name = model.Name, Email = model.Email });
 			}
 
 			return usersList;
@@ -42,7 +42,10 @@ namespace LoginManagementAPI.Services
 		/// <returns>The user details model.</returns>
 		public UserDetails GetById(int id)
 		{
-			throw new System.NotImplementedException();
+			UserDataModel userDataModel = _persistenceService.GetUserById(id);
+			var userDetails = new UserDetails { UserId = userDataModel.AgentId, Name = userDataModel.Name, Email = userDataModel.Email };
+
+			return userDetails;
 		}
 	}
 }

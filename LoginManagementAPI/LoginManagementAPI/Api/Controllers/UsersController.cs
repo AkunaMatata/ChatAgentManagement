@@ -26,7 +26,7 @@ namespace LoginManagementAPI.Api.Controllers
 		}
 
 		/// <summary>
-		/// The register action.
+		/// The get all users action.
 		/// </summary>
 		/// <returns>The registration result.</returns>
 		[System.Web.Mvc.HttpGet]
@@ -34,10 +34,23 @@ namespace LoginManagementAPI.Api.Controllers
 		public JsonResult GetAll()
 		{
 			IEnumerable<UserDetails> usersList = _userService.GetAllUsers();
-
 			var result = new JsonResult { Data = usersList };
 
 			return result;
+		}
+
+		/// <summary>
+		/// The get all users action.
+		/// </summary>
+		/// <returns>The registration result.</returns>
+		[System.Web.Mvc.HttpGet]
+		[System.Web.Http.Route("api/users/{userId}")]
+		public JsonResult GetById([FromUri] int userId)
+		{
+			UserDetails usersList = _userService.GetById(userId);
+			var result = new JsonResult { Data = usersList };
+
+			return new JsonResult { Data = result };
 		}
 	}
 }

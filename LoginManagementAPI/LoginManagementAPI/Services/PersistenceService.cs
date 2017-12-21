@@ -66,11 +66,24 @@ namespace LoginManagementAPI.Services
 
 			foreach (User user in users)
 			{
-				var userModel = new UserDataModel {AgentId = user.Id, CustomerId = user.CustomerId };
+				var userModel = new UserDataModel { AgentId = user.Id, CustomerId = user.CustomerId, Name = user.Name, Email = user.Email };
 				userModelsList.Add(userModel);
 			}
 
 			return userModelsList;
+		}
+
+		/// <summary>
+		/// Gets user by id.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <returns>The use data model.</returns>
+		public UserDataModel GetUserById(int id)
+		{
+			User userEntiry = _userDbService.GetUserById(id);
+			var userModel = new UserDataModel { AgentId = userEntiry.Id, CustomerId = userEntiry.CustomerId, Name = userEntiry.Name, Email = userEntiry.Email };
+
+			return userModel;
 		}
 	}
 }
