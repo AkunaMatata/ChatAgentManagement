@@ -1,0 +1,15 @@
+{
+    "configId": "default",
+  
+    "appRootPath": "",
+  
+    "rest": {
+      "apiHost": "",
+      "restLocation": ""
+    },
+  
+    "currentUserServiceUrl": "",
+    "changePasswordUrlFormat": "",
+  
+    "integrationHost": "",
+  }

@@ -1,0 +1,64 @@
+$description_color: rgba(0,0,0,.5);
+.chat-assignment {
+    font-size: 14px;
+    .jumbotron {
+        position: relative;
+        padding: 24px;
+        border-radius: 8px;
+        background-color: #eaf1f5;
+        font-size: 14px;
+        color: rgba(0,0,0,.8);
+        overflow: auto;
+        h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            border-bottom: 1px solid #dadde4;
+            padding-bottom: 15px;
+            color: #5a6976;
+        }
+
+        .description {
+            display: block;
+            margin-top: 8px;
+            margin-left: 30px;
+            margin-bottom: 24px;
+            color: $description_color;
+        }
+
+        .note {
+            display: block;
+            margin-left: 30px;
+            margin-bottom: 24px;
+            color: $description_color;
+            margin-top: -10px;
+            font-size: 12px;
+        }
+
+        label {
+            margin-bottom: 0;
+        }
+
+        .action-buttons{
+            @include flex-container(row, flex-end, flex-start);
+
+            .btn {
+                height: 36px;
+                line-height: 34px;
+                padding: 0 10px;
+                min-width: 90px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.body-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    padding: 30px;
+
+    .title {
+        padding: 10px 0 20px;
+    }
+}

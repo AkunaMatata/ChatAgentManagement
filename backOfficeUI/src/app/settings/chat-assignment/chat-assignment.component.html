@@ -1,0 +1,36 @@
+<div class="chat-assignment">
+    <ciw-header [title]="'Chat Assignment'"></ciw-header>
+    <section>
+        <div class="body-wrapper">
+            <div class="title">Use chat assignment to automate how chats are assigned to agents.</div>
+            <div class="jumbotron">
+                <h4>Chat routing</h4>
+                <p>Choose how incoming chats will be distributed between agents:</p>
+                <div class="radioinput">
+                    <p>
+                        <ciw-radiobutton [id]="'manual'" [(ngModel)]="mode" name="assignment" value="manual" >Manual selection </ciw-radiobutton>
+                        <br >
+                        <span class="description">All new chats go to “Unassigned”. The agent who reacts first, takes the chat.</span>
+                    </p>
+                    <p>
+                        <ciw-radiobutton [id]="'auto'" [(ngModel)]="mode" name="assignment" value="auto" >Auto assignment</ciw-radiobutton>
+                        <br>
+                        <span class="description">Incoming chats get automatically assigned to available agents.</span>
+                        <span class="note">Note: You can set chat limits for each agent in their profile.</span>
+                    </p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn" type="reset" [disabled]="!isDirty"
+                    (click)="onReset()" >
+                        <span class="no-select">Discard</span>
+                    </button>
+                    <span ></span>
+                    <button class="btn btn-primary" type="submit" [disabled]="!isDirty"
+                    (click)="onSave()">
+                        <span class="no-select">Save changes</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,61 @@
+@import "./styles/_index.scss";
+@import "./styles/bootstrap-custom.scss";
+@import '~font-awesome/css/font-awesome.min.css';
+// // Utility classes
+@import "~bootstrap/scss/utilities";
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-size: $font-size-root;
+  }
+
+body {
+    // margin-bottom: $footer-height + $content-margin-bottom;
+    font-family: $primary-regular-font-family;
+  }
+
+* {
+    box-sizing: border-box;
+}
+ a, p, div, span {
+     &:focus {
+         outline: none;
+     }
+ }
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+li {
+     &:focus {
+         outline: none;
+     }
+}
+.d-flex {
+    display: flex;
+  }
+
+*::-ms-clear {display: none; width:0; height:0;}
+
+.jumbotron {
+    padding: $jumbotron-padding ($jumbotron-padding / 2);
+    margin-bottom: $jumbotron-padding;
+    background-color: $jumbotron-bg;
+    @include border-radius($border-radius-lg);
+  
+    @include media-breakpoint-up(sm) {
+      padding: ($jumbotron-padding * 2) $jumbotron-padding;
+    }
+  }
+  
+  .jumbotron-hr {
+    border-top-color: darken($jumbotron-bg, 10%);
+  }
+  
+  .jumbotron-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    @include border-radius(0);
+  }

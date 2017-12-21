@@ -1,0 +1,44 @@
+$background-color-menu: #1d253a;
+$navigation-color:rgba(255, 255, 255, 0.596);
+$navigation-color_active: #fff;
+
+.left-navigation {
+    background-color: $background-color-menu;
+    height: 100%;
+    color: $navigation-color;
+    left: 0;
+    bottom: 0;
+    width: $left-navigation-menu-width;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    &__container {
+        flex-direction: column;
+    }
+    &__top-menu {
+        flex-direction: column;
+    }
+    &__bottom-menu {
+        flex-direction:column;
+        margin-top: auto;
+    }
+}
+ul {
+    padding: 4px;
+    width: 100%;
+}
+li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+        border-left: 4px solid #60aaf2;
+        color: $navigation-color_active;
+        a {
+            color: $navigation-color_active;
+        }
+    }
+}
+a {
+    color: $navigation-color;
+}

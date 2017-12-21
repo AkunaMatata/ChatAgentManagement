@@ -1,0 +1,43 @@
+$settings-main-title-color: #434c5d;
+
+.user-settings {
+    &.container {
+        display: flex;
+        flex-direction: column;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+        padding-right: 0;
+        span {
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: $settings-main-title-color;
+            padding-left: 24px;
+            padding-right: 24px;
+            line-height: 34px;
+            font-weight: 400;
+            height: 50px;
+            margin: 0 auto;
+        }
+        button {
+            &.btn {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .scroller {
+        overflow: auto;
+    }
+
+    .agent-list__container {
+        padding: 30px 0;
+        margin: 0 65px;
+        max-width: 1000px;
+        flex: 1;
+        overflow: auto;
+        height: 100% ;
+    }
+}

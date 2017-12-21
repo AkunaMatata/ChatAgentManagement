@@ -1,48 +1,83 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+/////
+import { AppConfigService } from './app-config/app-config.service';
+import { UserLoader } from './shared/state/user/user-loader';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ApiService } from './shared';
+import { ApiService } from './shared/api.service';
 import { routing } from './app.routing';
+import { AuthModule } from './auth/auth.module';
+import { LayoutModule } from './layout/layout.module';
+import { SettingsModule } from './settings/settings.module';
+import { DataAccessModule } from '../infrastructure/data-access/data-access.module';
+import { SharedStateModule } from './shared/state/shared-state.module';
+import { Store } from './shared/state/store';
 
-import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import { configureState } from './shared/state/state-config';
+import { RootStateInterface } from './shared/state/root-state-interface';
+import { User } from './shared/state/user/user';
+
+import './app.global.scss';
+
+function configureStateAndSetCurrentUser(store: Store<RootStateInterface>, user: User) {
+  configureState(store, { currentUser: user });
+}
+
+export function initConfig(
+          appConfigService: AppConfigService,
+          store: Store<RootStateInterface>,
+          currentUserLoader: UserLoader
+) {
+return () => appConfigService.load().then(() => {
+  const settings = {
+      apiEndpoint: appConfigService.getApiEndpoint(),
+      options: {
+      withCredentials: true
+    }
+  };
+
+  return currentUserLoader.load(appConfigService.getApiEndpoint())
+  .then(
+      currentUser => {
+          configureStateAndSetCurrentUser(store, currentUser);
+      },
+      e => {
+        console.log('error load user');
+      });
+    });
+  }
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    AuthModule,
+    CommonModule,
+    LayoutModule,
+    SettingsModule,
+    DataAccessModule,
+    SharedStateModule
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent
   ],
   providers: [
-    ApiService
+    ApiService,
+    AppConfigService,
+    UserLoader,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      deps: [AppConfigService, Store, UserLoader],
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
-  hmrOnInit(store) {
-    console.log('HMR store', store);
-  }
-  hmrOnDestroy(store) {
-    let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // recreate elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // remove styles
-    removeNgStyles();
-  }
-  hmrAfterDestroy(store) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
-}
+export class AppModule {}
