@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LoginManagementAPI.Api.Controllers;
 using LoginManagementAPI.Api.ViewModels;
@@ -24,7 +25,7 @@ namespace LoginManagementAPI.Tests.Controllers
 		[TestInitialize]
 		public void Initialize()
 		{
-			this._mockedLoginService = new Mock<ILoginService>();
+			_mockedLoginService = new Mock<ILoginService>();
 		}
 
 		/// <summary>
@@ -39,11 +40,10 @@ namespace LoginManagementAPI.Tests.Controllers
 			this._mockedLoginService.Setup(x => x.Validate(It.IsAny<User>())).Returns(new User());
 
 			// Act
-			JsonResult result = controller.Post(fakeModel);
+			var result = controller.Post(fakeModel);
 
 			// Assert
 			Assert.IsNotNull(result);
-			Assert.IsNotNull(result.Data);
 		}
 	}
 }

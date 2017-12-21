@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http.Results;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
@@ -16,27 +16,24 @@ namespace LoginManagementAPI.Api.Controllers
 
 		public LoginController()
 		{
-			this._loginService = new LoginService(this.ModelState);
+			this._loginService = new LoginService(ModelState);
 		}
 
 		/// <summary>
 		/// The default login action.
 		/// </summary>
 		/// <returns>The value indicating whether user is authenticated or not.</returns>
-		[System.Web.Http.HttpPost]
-		[System.Web.Http.ActionName("Default")]
-		public JsonResult Post([FromBody] UserViewModel model)
+		[HttpPost]
+		[ActionName("Default")]
+		public IHttpActionResult Post([FromBody] UserViewModel model)
 		{
 			// TODO models mapping
 			User userModel = new User();
 
 			User result = this._loginService.Validate(userModel);
 
-			return new JsonResult
-			{
-				Data = result,
-				JsonRequestBehavior = JsonRequestBehavior.AllowGet
-			};
+		    return Ok(result);
+
 		}
 
 		/// <summary>
@@ -45,15 +42,14 @@ namespace LoginManagementAPI.Api.Controllers
 		/// <param name="model">The <see cref="RegisterViewModel"/> model.</param>
 		/// <returns>The registration result.</returns>
 		[System.Web.Mvc.HttpPost]
-		[System.Web.Http.Route("api/login/register")]
-		public JsonResult Register(RegisterViewModel model)
+		public IHttpActionResult Put(RegisterViewModel model)
 		{
 			//TODO models mapping
 			//var registerModel = new RegisterModel { Email = model.Email, FullName = model.FullName, Password = model.Password };
 			
 			RegisterModel updatedModel = this._loginService.Register(model);
 
-			var result = new JsonResult {Data = updatedModel != null ? (object) updatedModel : this.ModelState};
+			var result = Ok(updatedModel != null ? (object)updatedModel : ModelState);
 
 			return result;
 		}

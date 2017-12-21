@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Mail;
-using System.Text;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using PersistenceData.Entities;
-using PersistenceData.Models;
 using ModelStateDictionary = System.Web.Http.ModelBinding.ModelStateDictionary;
 
 namespace LoginManagementAPI.Services
@@ -16,7 +12,7 @@ namespace LoginManagementAPI.Services
 	/// </summary>
 	public class LoginService : ILoginService
 	{
-		private ModelStateDictionary _modelState;
+		private readonly ModelStateDictionary _modelState;
 		private readonly IPersistenceService _persistenceService;
 
 		public LoginService(ModelStateDictionary modelState)
@@ -38,7 +34,7 @@ namespace LoginManagementAPI.Services
 			if (registerModel.Email.Trim().Length == 0)
 				_modelState.AddModelError("Email", "Email is required.");
 
-			if (!this.ValidateEmail(registerModel.Email.Trim()))
+			if (!ValidateEmail(registerModel.Email.Trim()))
 			{
 				_modelState.AddModelError("Email", "Email format is incorrect.");
 			}
@@ -85,7 +81,7 @@ namespace LoginManagementAPI.Services
 		/// <returns>The user register model.</returns>
 		public RegisterModel Register(RegisterViewModel model)
 		{
-			if (!this.ValidateRegisterModel(model))
+			if (!ValidateRegisterModel(model))
 			{
 				return null;
 			}
