@@ -15,8 +15,8 @@ namespace PersistenceData.Services
 	{
 		public UserDbService()
 		{
-			Database.SetInitializer<UserContext>(new DropCreateDatabaseAlways<UserContext>());
-			Database.SetInitializer<CustomerContext>(new DropCreateDatabaseAlways<CustomerContext>());
+//			Database.SetInitializer<UserContext>(new DropCreateDatabaseAlways<UserContext>());
+//			Database.SetInitializer<CustomerContext>(new DropCreateDatabaseAlways<CustomerContext>());
 		}
 
 		/// <summary>
@@ -73,10 +73,14 @@ namespace PersistenceData.Services
 		/// <returns>The collection of users.</returns>
 		public IEnumerable<User> GetAll()
 		{
+			IList<User> users;
+
 			using (UserContext dbContext = new UserContext())
 			{
-				return dbContext.Users;
+				users = dbContext.Users.ToList();
 			}
+
+			return users;
 		}
 
 		/// <summary>

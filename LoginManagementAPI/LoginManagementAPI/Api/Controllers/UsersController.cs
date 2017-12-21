@@ -28,7 +28,6 @@ namespace LoginManagementAPI.Api.Controllers
 		/// <summary>
 		/// The register action.
 		/// </summary>
-		/// <param name="model">The <see cref="RegisterViewModel"/> model.</param>
 		/// <returns>The registration result.</returns>
 		[System.Web.Mvc.HttpGet]
 		[System.Web.Http.Route("api/users/getall")]

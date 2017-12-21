@@ -1,4 +1,6 @@
-﻿namespace LoginManagementAPI.Services
+﻿using LoginManagementAPI.Models;
+
+namespace LoginManagementAPI.Services
 {
 	/// <summary>
 	/// The password service interface.
@@ -16,14 +18,15 @@
 		/// Generates salt data for password.
 		/// </summary>
 		/// <returns>The salt data.</returns>
-		byte[] GenerateSalt();
+		string GenerateSalt();
 
 		/// <summary>
 		/// Checks password.
 		/// </summary>
 		/// <param name="email">The email.</param>
 		/// <param name="password">The password.</param>
+		/// <param name="userModel">The user model.</param>
 		/// <returns>The result of password check.</returns>
-		bool CheckPassword(string email, string password);
+		bool CheckPassword(string email, string password, UserDataModel userModel);
 	}
 }

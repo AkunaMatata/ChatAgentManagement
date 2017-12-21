@@ -9,14 +9,11 @@ namespace LoginManagementAPI.Services
 	/// </summary>
 	public class PasswordService : IPasswordService
 	{
-		private IPersistenceService _persistenceService;
-
 		/// <summary>
 		/// Initializes new <see cref="PasswordService"/> instance.
 		/// </summary>
 		public PasswordService()
 		{
-			_persistenceService = new PersistenceService();
 		}
 
 		/// <summary>
@@ -37,14 +34,13 @@ namespace LoginManagementAPI.Services
 		/// Generates salt data for password.
 		/// </summary>
 		/// <returns>The salt data.</returns>
-		public byte[] GenerateSalt()
+		public string GenerateSalt()
 		{
 			var salt = new byte[20];
 			var random = new Random();
-
 			random.NextBytes(salt);
 
-			return salt;
+			return System.Text.Encoding.Default.GetString(salt);
 		}
 
 		/// <summary>
@@ -52,12 +48,10 @@ namespace LoginManagementAPI.Services
 		/// </summary>
 		/// <param name="email">The email.</param>
 		/// <param name="password">The password.</param>
+		/// <param name="userModel">The user model.</param>
 		/// <returns>The result of password check.</returns>
-		public bool CheckPassword(string email, string password)
+		public bool CheckPassword(string email, string password, UserDataModel userModel)
 		{
-			// get from db salt and pass
-			UserDataModel userModel = _persistenceService.GetUserByEmail(email);
-
 			string savedPassword = userModel.Password;
 			var actualPassword = string.Concat(Encode(password), userModel.Salt);
 
