@@ -15,8 +15,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     private readonly editActionCreator: EditActionCreator;
     private readonly store: Store<RootStateInterface>;
     private readonly userActionCreator: UserDetailsActionCreator;
-    public detailsForm: FormGroup;
     public title: string = 'firstname';
+    public detailsForm: FormGroup;
     public firstName: string;
     public lastName: string;
     public email: string;

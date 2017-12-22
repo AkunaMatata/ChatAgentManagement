@@ -1,0 +1,45 @@
+.scroll-container {
+    height: 100%;
+    width: 100%;
+}
+.scroller {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.wrapper{
+    @include flex-container(column, center,center)
+}
+.color-picker {
+    @include flex-container(row, flex-start, center);
+    .color-wrapper {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        margin: 0 5px 10px 0;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        .item {
+            margin: 3px;
+            height: 30px;
+            width: 30px;
+            color: #fff;
+            border-radius: 50%;
+            @include flex-container(row, center,center);
+            &.red {
+                background-color: red;
+            }
+            &.green {
+                background-color: green;
+            }
+            &.blue {
+                background-color: blue;
+            }
+        }
+        &.selected {
+            border-color: blue;
+        }
+    }
+
+}

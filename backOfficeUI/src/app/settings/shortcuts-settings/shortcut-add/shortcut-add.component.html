@@ -1,0 +1,27 @@
+<div class="scroll-container shortcut-add" >
+    <ciw-header [title]="title"></ciw-header>
+    <div class="scroller">
+        <div class="jumbotron container body col-sm-8">
+            <form>
+                <div class="form-row">
+                    <label for="reply"> Reply </label>
+                    <textarea id="reply" name="value"></textarea>
+                </div>
+                <div class="form-row">
+                    <label>Shortcuts</label>
+                    <input type="text" name="key">
+                </div>
+                <span>To use a canned response during a chat, type in # symbol and a shortcut.</span>
+                <div class="action-buttons">
+                        <button class="btn" type="reset" (click)="onDiscard()">
+                            <span class="no-select">Cancel</span>
+                        </button>
+                        <button class="btn btn-primary" type="button"
+                        (click)="onAdd()">
+                            <span class="no-select">Save changes</span>
+                        </button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

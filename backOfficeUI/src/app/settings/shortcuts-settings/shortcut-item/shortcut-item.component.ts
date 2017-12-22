@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './shortcut-item.component.html',
     styleUrls: ['./shortcut-item.component.scss']
 })
-export class ShortcutItem {
+export class ShortcutItemComponent {
     public key: string;
     public value: string;
 };

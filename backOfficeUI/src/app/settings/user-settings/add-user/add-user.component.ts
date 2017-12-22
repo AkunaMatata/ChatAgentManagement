@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 import { EditActionCreator } from '../../../shared/state/ui/settings/shared/edit-action-creator';
+import { UserDetailsActionCreator } from '../../../shared/state/settings/user-settings/user-details/user-details-action-creator';
 import { Store } from '../../../shared/state/store';
 import { RootStateInterface } from '../../../shared/state/root-state-interface';
 
@@ -14,7 +15,7 @@ import { RootStateInterface } from '../../../shared/state/root-state-interface';
 export class AddUserComponent implements OnInit, OnDestroy {
     private readonly editActionCreator: EditActionCreator;
     private readonly store: Store<RootStateInterface>;
-    private readonly router: Router;
+    private readonly userDetailsActionCreator: UserDetailsActionCreator;
     private readonly location: Location;
     public title: string = 'Add user';
     public addUserForm: FormGroup;
@@ -22,11 +23,11 @@ export class AddUserComponent implements OnInit, OnDestroy {
     constructor(
         editActionCreator: EditActionCreator,
         store: Store<RootStateInterface>,
-        router: Router,
+        userDetailsActionCreator: UserDetailsActionCreator,
         location: Location) {
         this.store = store;
         this.editActionCreator = editActionCreator;
-        this.router = router;
+        this.userDetailsActionCreator = userDetailsActionCreator;
         this.location = location;
      }
 
@@ -37,7 +38,6 @@ export class AddUserComponent implements OnInit, OnDestroy {
             email: new FormControl(null, [Validators.required, Validators.email]),
             role: new FormControl(null, Validators.required)
         })
-        this.addUserForm.valueChanges.subscribe(data => console.log('Form changes', data));
     }
 
     public ngOnDestroy() {
@@ -49,6 +49,9 @@ export class AddUserComponent implements OnInit, OnDestroy {
     }
 
     public onAdd() {
-        this.location.back();
+        debugger;
+        this.store.dispatchAsync(
+            this.userDetailsActionCreator.createAgent(this.addUserForm.value)
+        ).then(x => {this.location.back()})
     }
  }

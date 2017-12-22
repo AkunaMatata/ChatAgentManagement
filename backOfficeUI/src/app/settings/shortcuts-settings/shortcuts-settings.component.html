@@ -1,7 +1,7 @@
-<div class="shortcuts">
+<div class="shortcuts" *ngIf="!(editMode | async)">
     <div class="view-container">
         <ciw-header [title]="title">
-            <button [routerLink]="['add-user']" class="btn btn-primary btn-sm"> Add New</button>
+            <button [routerLink]="['add']" class="btn btn-primary btn-sm"> Add New</button>
         </ciw-header>
         <section>
             <div class="list">
@@ -13,3 +13,4 @@
         </section>
     </div>
 </div>
+<router-outlet></router-outlet>

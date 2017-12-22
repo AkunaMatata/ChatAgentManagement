@@ -24,11 +24,12 @@ export class UserDetailsActionCreator {
 
     public saveAgentDetails(agent: UserDetailsInterface) {
         return dispatch => this.agentProvider.update(agent.UserId, agent)
-            .then(updated => dispatch(this.setAgent(updated)));
+            .then(updated => this.setAgent(updated));
     }
 
     public createAgent(agent: UserDetailsInterface) {
-        return dispatch => this.agentProvider.create(agent);
+        return dispatch => this.agentProvider.create(agent)
+            .then(createdAgent => dispatch(this.setAgent(createdAgent)));
     }
 
     public setAgent(payload: any): Action {

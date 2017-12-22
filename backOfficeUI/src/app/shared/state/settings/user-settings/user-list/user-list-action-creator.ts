@@ -4,6 +4,7 @@ import { AsyncActionInterface } from '../../../async-action-interface';
 import { DataProvider } from '../../../../../../infrastructure/data-access/data-providers/data-provider';
 import { DataProvidersFactory } from '../../../../../../infrastructure/data-access/data-providers/data-providers-factory';
 import { ApiEndpoints } from '../../../../constants/api-endpoints';
+import { AgentStatus } from '../../../../constants/agent-status';
 import { UserCardInterface } from './user-card-interface';
 import { UserListActions } from './user-list-actions';
 
@@ -16,19 +17,14 @@ export class UserListActionCreator {
         this.agentProvider = dataProvidersFactory.create(ApiEndpoints.AgentDetais);
     }
 
-    public getAgentDetails(status: string): AsyncActionInterface<UserCardInterface[]> {
-        return dispatch => this.agentProvider.search('').then(
-                agent => dispatch(this.setAgent(agent))
+    public getAgentDetails(status: AgentStatus): AsyncActionInterface<UserCardInterface[]> {
+        return dispatch => this.agentProvider.get(`?status=${status }`).then(
+                agentList => dispatch(this.setAgentList(agentList))
         )
     }
 
-    public saveAgentDetails(agent: UserDetailsInterface) {
-        return dispatch => this.agentProvider.update(agent.UserId, agent)
-            .then(updated => dispatch(this.setAgent(updated)));
-    }
-
-    public createAgent(agent: UserDetailsInterface) {
-        return dispatch => this.agentProvider.create(agent);
+    public getAgentCount() {
+        return [];
     }
 
     public setAgentList(payload: any): Action {

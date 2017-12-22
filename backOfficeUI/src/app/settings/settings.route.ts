@@ -9,6 +9,7 @@ import { ShortcutSettingsComponent } from './shortcuts-settings/shortcuts-settin
 import { SubscriptionSettingsComponent } from './subscriptions-settings/subscriptions-settings.component';
 import { UserDetailsComponent } from './user-settings/user-details/user-details.component';
 import { AddUserComponent } from './user-settings/add-user/add-user.component';
+import { ShortcutAddComponent } from './shortcuts-settings/shortcut-add/shortcut-add.component';
 import { EditModeResolver } from '../shared/services/editmodeResolver';
 
 const routes: Routes = [
@@ -28,7 +29,13 @@ const routes: Routes = [
             { path: 'chat-customization', component: ChatCustomizationComponent },
             { path: 'chat-assignment', component: ChatAssignmentComponent },
             { path: 'general', component: GeneralSettingsComponent },
-            { path: 'shortcuts', component: ShortcutSettingsComponent },
+            {
+                path: 'shortcuts',
+                component: ShortcutSettingsComponent,
+                children: [
+                    { path: 'add', component: ShortcutAddComponent, resolve: { state: EditModeResolver} },
+                ]
+            },
             { path: 'integration', component: IntegrationSettingsComponent },
             { path: 'subscription', component: SubscriptionSettingsComponent },
         ]
