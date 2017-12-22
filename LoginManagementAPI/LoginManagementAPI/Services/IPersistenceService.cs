@@ -37,5 +37,19 @@ namespace LoginManagementAPI.Services
 		/// <param name="id">The id.</param>
 		/// <returns>The use data model.</returns>
 		UserDataModel GetUserById(int id);
+
+		/// <summary>
+		/// Saves the user.
+		/// </summary>
+		/// <param name="model">The user model.</param>
+		/// <returns>The user data model.</returns>
+		UserDataModel SaveUser(UserViewModel model);
+
+		/// <summary>
+		/// Updates the user.
+		/// </summary>
+		/// <param name="model">The user model.</param>
+		/// <returns>The user data model.</returns>
+		UserDataModel UpdateUser(UserViewModel model);
 	}
 }

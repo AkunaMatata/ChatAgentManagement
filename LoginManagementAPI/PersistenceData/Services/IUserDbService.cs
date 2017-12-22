@@ -12,15 +12,19 @@ namespace PersistenceData.Services
 		/// Saves customer.
 		/// </summary>
 		/// <param name="customerModel">The customer model.</param>
+		/// <param name="userPassword">The default user password.</param>
+		/// <param name="salt">The salt.</param>
 		/// <returns>The customer model.</returns>
-		Customer SaveCustomer(Customer customerModel);
+		Customer SaveCustomer(Customer customerModel, string userPassword, string salt);
 
 		/// <summary>
 		/// Saves new registered user.
 		/// </summary>
 		/// <param name="userModel">The user model.</param>
+		/// <param name="userPassword">The default user password.</param>
+		/// <param name="salt">The salt.</param>
 		/// <returns>The user model.</returns>
-		User SaveUser(User userModel);
+		User SaveUser(User userModel, string userPassword, string salt);
 
 		/// <summary>
 		/// Gets a user by an email.
@@ -41,5 +45,12 @@ namespace PersistenceData.Services
 		/// <param name="id">The identifier.</param>
 		/// <returns>The user entity.</returns>
 		User GetUserById(int id);
+
+		/// <summary>
+		/// Updates the user.
+		/// </summary>
+		/// <param name="user">The user.</param>
+		/// <returns>The updated model.</returns>
+		User UpdateUser(User user);
 	}
 }

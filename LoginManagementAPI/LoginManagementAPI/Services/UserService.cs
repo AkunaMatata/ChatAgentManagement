@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 
 namespace LoginManagementAPI.Services
@@ -29,7 +30,7 @@ namespace LoginManagementAPI.Services
 
 			foreach (UserDataModel model in users)
 			{
-				usersList.Add(new UserDetails { UserId = model.AgentId, Name = model.Name, Email = model.Email });
+				usersList.Add(new UserDetails { UserId = model.AgentId, Name = model.FirstName, Email = model.Email });
 			}
 
 			return usersList;
@@ -43,7 +44,34 @@ namespace LoginManagementAPI.Services
 		public UserDetails GetById(int id)
 		{
 			UserDataModel userDataModel = _persistenceService.GetUserById(id);
-			var userDetails = new UserDetails { UserId = userDataModel.AgentId, Name = userDataModel.Name, Email = userDataModel.Email };
+			var userDetails = new UserDetails { UserId = userDataModel.AgentId, Name = userDataModel.FirstName, Email = userDataModel.Email };
+
+			return userDetails;
+		}
+
+		/// <summary>
+		/// Saves new user.
+		/// </summary>
+		/// <param name="model">The model.</param>
+		/// <returns>The user details.</returns>
+		public UserDetails SaveUser(UserViewModel model)
+		{
+			UserDataModel userDataModel = _persistenceService.SaveUser(model);
+			var userDetails = new UserDetails { UserId = userDataModel.AgentId, Name = userDataModel.FirstName, Email = userDataModel.Email };
+
+			return userDetails;
+		}
+
+
+		/// <summary>
+		/// Updates user.
+		/// </summary>
+		/// <param name="model">The model.</param>
+		/// <returns>The user details.</returns>
+		public UserDetails UpdateUser(UserViewModel model)
+		{
+			UserDataModel userDataModel = _persistenceService.UpdateUser(model);
+			var userDetails = new UserDetails { UserId = userDataModel.AgentId, Name = userDataModel.FirstName, Email = userDataModel.Email };
 
 			return userDetails;
 		}

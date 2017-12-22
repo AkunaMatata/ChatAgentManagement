@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 
 namespace LoginManagementAPI.Services
@@ -20,5 +21,19 @@ namespace LoginManagementAPI.Services
 		/// <param name="id">The identifier.</param>
 		/// <returns>The user details model.</returns>
 		UserDetails GetById(int id);
+
+		/// <summary>
+		/// Saves new user.
+		/// </summary>
+		/// <param name="model">The model.</param>
+		/// <returns>The user details.</returns>
+		UserDetails SaveUser(UserViewModel model);
+
+		/// <summary>
+		/// Updates user.
+		/// </summary>
+		/// <param name="model">The model.</param>
+		/// <returns>The user details.</returns>
+		UserDetails UpdateUser(UserViewModel model);
 	}
 }

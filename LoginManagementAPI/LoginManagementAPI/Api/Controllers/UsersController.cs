@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Results;
+using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
 
@@ -34,14 +36,42 @@ namespace LoginManagementAPI.Api.Controllers
 		}
 
 		/// <summary>
-		/// The get all users action.
+		/// The get user by id action.
 		/// </summary>
-		/// <returns>The registration result.</returns>
+		/// <returns>The action result.</returns>
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
-			UserDetails usersList = _userService.GetById(id);
-		    var result = Ok(usersList);
+			UserDetails userDetails = _userService.GetById(id);
+		    OkNegotiatedContentResult<UserDetails> result = Ok(userDetails);
+
+			return result;
+		}
+
+		/// <summary>
+		/// The user post action.
+		/// </summary>
+		/// <param name="model">The user view model.</param>
+		/// <returns></returns>
+		[HttpPost]
+		public IHttpActionResult Post(UserViewModel model)
+		{
+			UserDetails user = _userService.SaveUser(model);
+			OkNegotiatedContentResult<UserDetails> result = Ok(user);
+
+			return result;
+		}
+
+		/// <summary>
+		/// The user put action.
+		/// </summary>
+		/// <param name="model">The model to update.</param>
+		/// <returns>The updated model.</returns>
+		[HttpPut]
+		public IHttpActionResult Put(UserViewModel model)
+		{
+			UserDetails updatedModel = _userService.UpdateUser(model);
+			OkNegotiatedContentResult<object> result = Ok(updatedModel != null ? (object)updatedModel : ModelState);
 
 			return result;
 		}

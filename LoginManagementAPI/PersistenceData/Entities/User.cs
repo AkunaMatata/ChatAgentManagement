@@ -23,10 +23,15 @@ namespace PersistenceData.Entities
 		public string Password { get; set; }
 
 		/// <summary>
-		/// Gets or sets the name.
+		/// Gets or sets the first name.
 		/// </summary>
 		/// <value>The name.</value>
-		public string Name { get; set; }
+		public string FirstName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the last name.
+		/// </summary>
+		public string LastName { get; set; }
 
 		/// <summary>
 		/// The email.
@@ -44,11 +49,6 @@ namespace PersistenceData.Entities
 		public Role Role { get; set; }
 
 		/// <summary>
-		/// The created date.
-		/// </summary>
-		public DateTime CreatedDate { get; set; }
-
-		/// <summary>
 		/// Gets or sets the salt.
 		/// </summary>
 		/// <value>The salt.</value>
@@ -58,5 +58,10 @@ namespace PersistenceData.Entities
 
 		[ForeignKey("Customer")]
 		public int CustomerId { get; set; }
+
+		/// <summary>
+		/// The created date.
+		/// </summary>
+		public DateTime CreatedDate { get; set; }
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using System.Web.Http.Results;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
 using LoginManagementAPI.Services;
@@ -25,12 +24,9 @@ namespace LoginManagementAPI.Api.Controllers
 		/// <returns>The value indicating whether user is authenticated or not.</returns>
 		[HttpPost]
 		[ActionName("Default")]
-		public IHttpActionResult Post([FromBody] UserViewModel model)
+		public IHttpActionResult Post([FromBody] RegisterViewModel model)
 		{
-			// TODO models mapping
-			User userModel = new User();
-
-			User result = this._loginService.Validate(userModel);
+			var result = this._loginService.Register(model);
 
 		    return Ok(result);
 
@@ -41,7 +37,7 @@ namespace LoginManagementAPI.Api.Controllers
 		/// </summary>
 		/// <param name="model">The <see cref="RegisterViewModel"/> model.</param>
 		/// <returns>The registration result.</returns>
-		[System.Web.Mvc.HttpPost]
+		[HttpPut]
 		public IHttpActionResult Put(RegisterViewModel model)
 		{
 			//TODO models mapping

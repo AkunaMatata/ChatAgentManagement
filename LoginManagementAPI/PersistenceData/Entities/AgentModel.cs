@@ -17,6 +17,6 @@ namespace PersistenceData.Models
 		/// Gets or sets the customer identifier.
 		/// </summary>
 		/// <value>The customer id.</value>
-		public Guid CustomerId { get; set; }
+		public int CustomerId { get; set; }
 	}
 }

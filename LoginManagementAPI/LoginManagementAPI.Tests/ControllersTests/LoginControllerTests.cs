@@ -36,7 +36,7 @@ namespace LoginManagementAPI.Tests.Controllers
 		{
 			// Arrange
 			LoginController controller = new LoginController();
-			var fakeModel = new UserViewModel { Email = "testEmail", Password = "12345" };
+			var fakeModel = new RegisterViewModel { Email = "testEmail", Password = "12345" };
 			this._mockedLoginService.Setup(x => x.Validate(It.IsAny<User>())).Returns(new User());
 
 			// Act
