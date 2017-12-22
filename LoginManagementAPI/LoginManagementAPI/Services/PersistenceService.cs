@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LoginManagementAPI.Api.ViewModels;
 using LoginManagementAPI.Models;
@@ -33,15 +34,17 @@ namespace LoginManagementAPI.Services
 			var model = new Customer
 			{
 				Email = registerModel.Email,
-				Password = registerModel.Password,
 				Name = registerModel.FullName
 			};
 
-			model.Password = _passwordService.Encode(model.Password);
-			model.Salt = _passwordService.GenerateSalt();
-			model.Password = string.Concat(model.Password, model.Salt);
+			//			model.Password = _passwordService.Encode(model.Password);
+			//			model.Salt = _passwordService.GenerateSalt();
+			//			model.Password = string.Concat(model.Password, model.Salt);
+			
+			string defaultUserSalt = _passwordService.GenerateSalt();
+			string defaultUserPassword = string.Concat(_passwordService.Encode(registerModel.Password), defaultUserSalt);
 
-			Customer userAddedModel = this._userDbService.SaveCustomer(model);
+			Customer userAddedModel = this._userDbService.SaveCustomer(model, defaultUserPassword, defaultUserSalt);
 
 			return new UserDataModel { CustomerId = userAddedModel.Id, AgentId = userAddedModel.Users.First().Id, Role = userAddedModel.Users.First().Role };
 		}
@@ -67,7 +70,7 @@ namespace LoginManagementAPI.Services
 
 			foreach (User user in users)
 			{
-				var userModel = new UserDataModel { AgentId = user.Id, CustomerId = user.CustomerId, Name = user.Name, Email = user.Email };
+				var userModel = new UserDataModel { AgentId = user.Id, CustomerId = user.CustomerId, FirstName = user.FirstName, Email = user.Email };
 				userModelsList.Add(userModel);
 			}
 
@@ -82,7 +85,69 @@ namespace LoginManagementAPI.Services
 		public UserDataModel GetUserById(int id)
 		{
 			User userEntiry = _userDbService.GetUserById(id);
-			var userModel = new UserDataModel { AgentId = userEntiry.Id, CustomerId = userEntiry.CustomerId, Name = userEntiry.Name, Email = userEntiry.Email };
+			var userModel = new UserDataModel { AgentId = userEntiry.Id, CustomerId = userEntiry.CustomerId, FirstName = userEntiry.FirstName, Email = userEntiry.Email };
+
+			return userModel;
+		}
+
+		public UserDataModel SaveUser(UserViewModel model)
+		{
+			var user = new User
+			{
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				CustomerId = model.CustomerId,
+				Email = model.Email,
+				CreatedDate = DateTime.UtcNow
+			};
+
+			string userSalt = _passwordService.GenerateSalt();
+			string userPassword = string.Concat(_passwordService.Encode(model.Password), userSalt);
+
+			user = _userDbService.SaveUser(user, userPassword, userSalt);
+
+			var userModel = new UserDataModel
+			{
+				AgentId = user.Id,
+				CustomerId = user.CustomerId,
+				Role = user.Role,
+				FirstName = user.FirstName,
+				LastName = user.FirstName,
+				Email = user.Email
+			};
+
+			return userModel;
+		}
+
+		/// <summary>
+		/// Updates the user.
+		/// </summary>
+		/// <param name="model">The user model.</param>
+		/// <returns>The user data model.</returns>
+		public UserDataModel UpdateUser(UserViewModel model)
+		{
+			var user = new User
+			{
+				Id = model.Id,
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				CustomerId = model.CustomerId,
+				Email = model.Email,
+				Role = model.Role,
+				IsActive = model.IsActive
+			};
+
+			user = _userDbService.UpdateUser(user);
+
+			var userModel = new UserDataModel
+			{
+				AgentId = user.Id,
+				CustomerId = user.CustomerId,
+				Role = user.Role,
+				FirstName = user.FirstName,
+				LastName = user.FirstName,
+				Email = user.Email
+			};
 
 			return userModel;
 		}
