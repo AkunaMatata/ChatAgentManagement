@@ -6,11 +6,8 @@
         <ciw-agent-panel></ciw-agent-panel>
         <div class="view-container scroller">
             <main class="agent-list__container scrollable" >
-                <div class="content">
-                    <ciw-agent-card></ciw-agent-card>
-                    <ciw-agent-card [agentCard]="currentAgent"></ciw-agent-card>
-                    <ciw-agent-card></ciw-agent-card>
-                    <ciw-agent-card></ciw-agent-card>
+                <div class="content" *ngFor="let user of userList | async">
+                    <ciw-agent-card [agentCard]="user"></ciw-agent-card>
                 </div>
             </main>
         </div>

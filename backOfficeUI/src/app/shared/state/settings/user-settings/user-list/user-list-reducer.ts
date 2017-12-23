@@ -3,6 +3,7 @@ import { UserCardInterface } from './user-card-interface';
 
 const initialState: UserCardInterface = {
     UserId: undefined,
+    FirstName: undefined,
     Email: undefined,
     Status: undefined,
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'ciw-shortcut-item',
@@ -6,6 +6,33 @@ import { Component } from '@angular/core';
     styleUrls: ['./shortcut-item.component.scss']
 })
 export class ShortcutItemComponent {
-    public key: string;
-    public value: string;
+    private showActions: boolean;
+    public get tags(): string[] {
+        return _.split(_.trim(this.shortcutItem.key, '#'), '#');
+    }
+
+    public get showButtons() {
+        return {
+            show: this.showActions
+        }
+    }
+
+    @Input()
+    public shortcutItem;
+
+    @Output()
+    public remove: EventEmitter<object> = new EventEmitter();
+
+    public toggleDelete() {
+        this.showActions = true;
+    }
+
+    public onRemove() {
+        console.log('deleted')
+        this.remove.emit(this);
+    }
+
+    public onCancel() {
+        this.showActions = false;
+    }
 };

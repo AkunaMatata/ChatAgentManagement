@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { SharedStateModule } from '../../shared/state/shared-state.module';
 import { UserSettingsComponent } from './user-settings.component';
 import { AgentCardComponent } from './agent-card/agent-card.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
@@ -18,7 +19,8 @@ import { RadiobuttonModule } from '../../../controls/radiobutton/radiobutton.mod
         SharedModule,
         FormsModule,
         ReactiveFormsModule,
-        RadiobuttonModule
+        RadiobuttonModule,
+        SharedStateModule
     ],
     declarations: [
         UserSettingsComponent,

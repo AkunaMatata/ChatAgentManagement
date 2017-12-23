@@ -11,13 +11,12 @@ import { UserListActions } from './user-list-actions';
 @Injectable()
 export class UserListActionCreator {
     private readonly agentProvider: DataProvider<UserCardInterface>;
-    constructor(
-        dataProvidersFactory: DataProvidersFactory,
-    ) {
+
+    constructor( dataProvidersFactory: DataProvidersFactory ) {
         this.agentProvider = dataProvidersFactory.create(ApiEndpoints.AgentDetais);
     }
 
-    public getAgentDetails(status: AgentStatus): AsyncActionInterface<UserCardInterface[]> {
+    public getAgentList(status: AgentStatus): AsyncActionInterface<UserCardInterface[]> {
         return dispatch => this.agentProvider.get(`?status=${status }`).then(
                 agentList => dispatch(this.setAgentList(agentList))
         )

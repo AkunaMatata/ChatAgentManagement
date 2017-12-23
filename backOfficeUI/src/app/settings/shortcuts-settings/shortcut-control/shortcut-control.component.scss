@@ -1,0 +1,30 @@
+.form-tag {
+    @include flex-container(row, flex-start,center);
+    flex-wrap: nowrap;
+    margin-right: 4px;
+    padding: 0 10px;
+    border: 1px solid #c2cdd7;
+    border-radius: 4px;
+    line-height: 25px;
+    cursor: default;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    &__close {
+        display: inline-block;
+        line-height: 22px;
+        vertical-align: middle;
+        padding: 2px 5px 0 0;
+        font-size: 22px;
+        cursor: pointer;
+        color: rgba(90,105,118,.5);
+    }
+
+    &__hash {
+        margin-right: 1px;
+        color: #3e7ce4;
+    }
+    span {
+        white-space: nowrap;
+    }
+}

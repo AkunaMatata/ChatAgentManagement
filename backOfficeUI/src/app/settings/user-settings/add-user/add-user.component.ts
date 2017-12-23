@@ -49,7 +49,6 @@ export class AddUserComponent implements OnInit, OnDestroy {
     }
 
     public onAdd() {
-        debugger;
         this.store.dispatchAsync(
             this.userDetailsActionCreator.createAgent(this.addUserForm.value)
         ).then(x => {this.location.back()})

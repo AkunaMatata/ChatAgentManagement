@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { chatAssignmentReducer } from './chat-settings/chat-assignment/chat-assignment-reducer';
-import { shortcutsReducer } from './chat-settings/shortcuts/shortcuts-reducer';
-import { userSettingsReducer } from './user-settings//user-settings-reducer';
+import { userSettingsReducer } from './user-settings/user-settings-reducer';
+import { chatSettingsReducer } from './chat-settings/chat-settings-reducer';
 
 export const settingsReducer = combineReducers({
-    shortcuts: shortcutsReducer,
-    chatAssignment: chatAssignmentReducer,
+    chatSettings: chatSettingsReducer,
     userSettings: userSettingsReducer
 });

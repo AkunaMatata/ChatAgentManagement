@@ -26,7 +26,6 @@ export class EditModeResolver implements Resolve<boolean> {
      */
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> |
         Promise<boolean> | boolean {
-            console.log('here')
         return  this.store.dispatch(this.actionCreator.setEditMode(true))
     }
 }

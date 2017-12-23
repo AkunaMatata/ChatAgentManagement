@@ -6,6 +6,7 @@ import { DataProvidersFactory } from '../../../../../../infrastructure/data-acce
 import { ApiEndpoints } from '../../../../constants/api-endpoints';
 import { UserDetailsInterface } from './user-details-interface';
 import { UserDetailsActions } from './user-details-actions';
+import { addCustomerId  } from '../../../../services/addCustomerId';
 
 @Injectable()
 export class UserDetailsActionCreator {
@@ -23,12 +24,12 @@ export class UserDetailsActionCreator {
     }
 
     public saveAgentDetails(agent: UserDetailsInterface) {
-        return dispatch => this.agentProvider.update(agent.UserId, agent)
+        return dispatch => this.agentProvider.update(agent.UserId, addCustomerId(agent))
             .then(updated => this.setAgent(updated));
     }
 
     public createAgent(agent: UserDetailsInterface) {
-        return dispatch => this.agentProvider.create(agent)
+        return dispatch => this.agentProvider.create(addCustomerId(agent))
             .then(createdAgent => dispatch(this.setAgent(createdAgent)));
     }
 

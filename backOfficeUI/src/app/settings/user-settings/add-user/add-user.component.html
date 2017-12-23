@@ -42,14 +42,14 @@
                         </div>
                     </div>
                     <div class="action-buttons">
-                            <button class="btn" type="reset" (click)="onDiscard()">
-                                <span class="no-select">Cancel</span>
-                            </button>
-                            <button class="btn btn-primary" type="button" [disabled]="addUserForm.invalid || !addUserForm.dirty"
-                            (click)="onAdd()">
-                                <span class="no-select">Add user</span>
-                            </button>
-                        </div>
+                        <button class="btn" type="reset" (click)="onDiscard()">
+                            <span class="no-select">Cancel</span>
+                        </button>
+                        <button class="btn btn-primary" type="button" [disabled]="addUserForm.invalid || !addUserForm.dirty"
+                        (click)="onAdd()">
+                            <span class="no-select">Add user</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

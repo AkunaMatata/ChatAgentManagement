@@ -1,23 +1,28 @@
-<div class="scroll-container shortcut-add" >
+<div class="scroll-container shortcut-add">
     <ciw-header [title]="title"></ciw-header>
     <div class="scroller">
         <div class="jumbotron container body col-sm-8">
-            <form>
+            <form #f="ngForm">
                 <div class="form-row">
                     <label for="reply"> Reply </label>
-                    <textarea id="reply" name="value"></textarea>
+                    <textarea id="reply" [(ngModel)]="value" name="value"></textarea>
                 </div>
                 <div class="form-row">
                     <label>Shortcuts</label>
-                    <input type="text" name="key">
+                    <div class="tag-container" [ngClass]="focused">
+                        <ng-container *ngFor="let item of list">
+                            <ciw-shortcut-control (delete)="delete($event)" [name]="item"></ciw-shortcut-control>
+                        </ng-container>
+                        <input type="text" (click)="onClick()" (blur)="onBlur()" [(ngModel)]="key" name="key">
+                    </div>
                 </div>
-                <span>To use a canned response during a chat, type in # symbol and a shortcut.</span>
+                <span>To use a shortcut during a chat, type in # symbol and a shortcut.</span>
                 <div class="action-buttons">
                         <button class="btn" type="reset" (click)="onDiscard()">
                             <span class="no-select">Cancel</span>
                         </button>
-                        <button class="btn btn-primary" type="button"
-                        (click)="onAdd()">
+                        <button class="btn btn-primary" type="button" [disabled]="disabled"
+                        (click)="onSave()">
                             <span class="no-select">Save changes</span>
                         </button>
                     </div>

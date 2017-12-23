@@ -35,4 +35,11 @@ export class ShortcutsActionCreator {
             payload: payload
         } as Action;
     }
+
+    public removeShortcuts(payload: any): Action {
+        return {
+            type: ShortcutsActions.REMOVE_SHORTCUTS,
+            payload: payload
+        } as Action;
+    }
 };

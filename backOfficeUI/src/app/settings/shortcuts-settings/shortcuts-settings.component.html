@@ -4,11 +4,8 @@
             <button [routerLink]="['add']" class="btn btn-primary btn-sm"> Add New</button>
         </ciw-header>
         <section>
-            <div class="list">
-                <ciw-shortcut-item></ciw-shortcut-item>
-                <ciw-shortcut-item></ciw-shortcut-item>
-                <ciw-shortcut-item></ciw-shortcut-item>
-                <ciw-shortcut-item></ciw-shortcut-item>
+            <div class="list" *ngFor="let shortcut of shortcuts | async">
+                <ciw-shortcut-item (remove)="onRemove($event)" [shortcutItem]="shortcut"></ciw-shortcut-item>
             </div>
         </section>
     </div>

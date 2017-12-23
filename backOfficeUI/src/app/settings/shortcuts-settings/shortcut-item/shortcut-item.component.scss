@@ -66,6 +66,10 @@ $shortcut_actions_border_color: #cbd4de;
         left: 0;
         right: 0;
         bottom: 0;
+        &.show {
+            z-index: 1;
+            opacity: 1;
+        }
 
         .delete-inner {
             position: absolute;

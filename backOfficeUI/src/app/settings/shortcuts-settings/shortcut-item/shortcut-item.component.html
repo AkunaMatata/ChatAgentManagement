@@ -1,10 +1,14 @@
 <div class="wrapper shortcut">
     <div class="topline">
         <ul class="shortcut__tags">
-            <li><span class="shortcut__tag"><span>#</span>{{key}}</span></li>
+            <li>
+                <ng-container *ngFor="let tag of tags">
+                    <span class="shortcut__tag"><span>#</span>{{tag}}</span>
+                </ng-container>
+            </li>
         </ul>
         <ul class="shortcut__actions">
-            <li class="action">
+            <li class="action" (click)="toggleDelete()">
                 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
             </li>
             <li class="action">
@@ -12,12 +16,12 @@
             </li>
         </ul>
     </div>
-    <div class="shortcut__text">{{value}}</div>
-    <div class="delete">
+    <div class="shortcut__text">{{shortcutItem.value}}</div>
+    <div class="delete" [ngClass]="showButtons">
         <div class="delete-inner">
             <div class="actions">
-                <button> delete</button>
-                <button> cancel</button>
+                <button class="btn-sm btn-err" (click)="onRemove()"> delete</button>
+                <button class="btn-sm" (click)="oncancel()"> cancel</button>
             </div>
         </div>
     </div>

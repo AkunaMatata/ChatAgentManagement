@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UrlConstants } from '../../../shared/constants/url-constants';
 import { EditActionCreator } from '../../../shared/state/ui/settings/shared/edit-action-creator';
 import { UserDetailsActionCreator } from '../../../shared/state/settings/user-settings/user-details/user-details-action-creator';
@@ -15,6 +17,8 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     private readonly editActionCreator: EditActionCreator;
     private readonly store: Store<RootStateInterface>;
     private readonly userActionCreator: UserDetailsActionCreator;
+    private readonly route: ActivatedRoute;
+
     public title: string = 'firstname';
     public detailsForm: FormGroup;
     public firstName: string;
@@ -24,13 +28,17 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
     public password: string;
     public avatarUrl: string = UrlConstants.DefaultLogo;
 
+    private subscribers: Subscription[] = [];
+
     constructor(
         editActionCreator: EditActionCreator,
         store: Store<RootStateInterface>,
-        userActionCreator: UserDetailsActionCreator ) {
-        this.store = store;
-        this.editActionCreator = editActionCreator;
-        this.userActionCreator = userActionCreator;
+        userActionCreator: UserDetailsActionCreator,
+        route: ActivatedRoute ) {
+            this.store = store;
+            this.editActionCreator = editActionCreator;
+            this.userActionCreator = userActionCreator;
+            this.route = route;
     }
 
     public ngOnInit() {
@@ -40,19 +48,24 @@ export class UserDetailsComponent implements OnInit, OnDestroy, OnChanges {
             email: new FormControl(null, [Validators.required, Validators.email]),
             role: new FormControl(null, Validators.required)
         })
-
-        this.store.dispatchAsync(
-            this.userActionCreator.getAgentDetails(4)
+        this.subscribers.push(
+        this.route.params.subscribe(params => {
+            let id = +params['id'];
+            this.store.dispatchAsync(this.userActionCreator.getAgentDetails(id)
+            );
+         })
         );
-        this.store.select(store => store.settings.userSettings.selectedAgent)
+
+        this.subscribers.push( this.store.select(store => store.settings.userSettings.selectedAgent)
             .filter(x => x.UserId !== undefined)
             .subscribe(agent => {
                 this.setupForm(agent);
-            });
+            }));
     }
 
     public ngOnDestroy() {
         this.store.dispatch(this.editActionCreator.setEditMode(false));
+        _.forEach(this.subscribers, x => x.unsubscribe());
     }
 
     public ngOnChanges(changes: any) {

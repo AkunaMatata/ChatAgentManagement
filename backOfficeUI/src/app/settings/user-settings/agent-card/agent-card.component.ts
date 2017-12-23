@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import  { UrlConstants } from '../../../shared/constants/url-constants';
 
 @Component({
@@ -7,24 +7,20 @@ import  { UrlConstants } from '../../../shared/constants/url-constants';
     styleUrls: ['./agent-card.component.scss']
 })
 
-export class AgentCardComponent implements OnInit{
+export class AgentCardComponent {
     public status: string = 'online';
     public get agentName() {
-        return this.agentCard ? this.agentCard.FirstName : 'Name'
+        return this.agentCard ? this.agentCard.Name : ''
     };
     public get agentEmail() {
-        return this.agentCard ? this.agentCard.Email : 'email'
+        return this.agentCard ? this.agentCard.Email : ''
     };
-    public id: string = 'user1';
-    public ie: string = '';
+    public get id() {
+        return this.agentCard ? this.agentCard.UserId : null;
+    }
+
     public url: string = UrlConstants.DefaultLogo;
 
     @Input()
     public agentCard: any;
-
-    constructor() {
-    }
-
-    public ngOnInit () {
-    }
  }
